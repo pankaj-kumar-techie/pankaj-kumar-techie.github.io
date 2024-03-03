@@ -4,52 +4,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Pankaj Kumar - Experienced Software Engineer">
+    <meta name="keywords" content="software engineer, full-stack development, Java, React, Angular, AWS">
+    <meta name="author" content="Pankaj Kumar">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
     <title>Pankaj Kumar - Software Engineer</title>
+
+    <!-- JSON-LD structured data for SEO -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Pankaj Kumar",
+            "jobTitle": "Software Engineer",
+            "url": "https://pankaj-kumar-techie.github.io/",
+            "sameAs": [
+                "https://github.com/pankaj-kumar-techie",
+                "https://www.linkedin.com/in/pankaj-kumar-techie",
+            ]
+        }
+    </script>
 </head>
 
 <body>
+    <nav>
+        <ul>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#blogs">Blogs</a></li>
+            <li><a href="#contact">Contact Me</a></li>
+        </ul>
+    </nav>
     <header>
         <h1>Pankaj Kumar</h1>
         <p>Experienced Software Engineer</p>
     </header>
+    <main>
+        <section id="about">
+            <h2>About Me</h2>
+            <p>
+                I am an experienced Software Engineer with a Bachelor of Engineering (B.E.) in Information Technology
+                from
+                Chandigarh University. With over 5 years of experience, I specialize in full-stack development and have
+                a
+                strong knowledge of front-end and back-end techniques. My goal is to deliver high-quality software
+                solutions
+                and ensure client satisfaction.
+            </p>
+        </section>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>
-            I am an experienced Software Engineer with a Bachelor of Engineering (B.E.) in Information Technology from
-            Chandigarh University. With over 5 years of experience, I specialize in full-stack development and have a
-            strong knowledge of front-end and back-end techniques. My goal is to deliver high-quality software solutions
-            and ensure client satisfaction.
-        </p>
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skill-category">
+                <h3>Back-end Development</h3>
+                <p>Java, Spring Boot</p>
+            </div>
+            <!-- Repeat similar divs for other skill categories -->
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="card-grid" id="project-grid"></div>
+            <!-- Project cards will be dynamically added here using JavaScript -->
+        </section>
+
+        <section id="blogs">
+            <h2>Blogs</h2>
+            <div class="card-grid" id="blog-grid"></div>
+            <!-- Blog cards will be dynamically added here using JavaScript -->
+        </section>
+
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <p>Email: pankajkumar.techie@gmail.com</p>
+            <p>LinkedIn: linkedin.com/in/your-profile</p>
+            <p>WhatsApp: <a href="https://wa.me/9569576707">Send me a message</a></p>
+            <!-- Add other contact information as needed -->
+
+            <!-- Contact Form -->
+            <!-- <form action="#" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <button type="submit">Submit</button>
+            </form> -->
+        </section>
+    </main>
+
+    <section id="social-links">
+        <h2>Social Links</h2>
+        <ul>
+            <li><a href="https://www.linkedin.com/in/pankaj-kumar-techie" target="_blank">LinkedIn</a></li>
+            <li><a href="https://github.com/pankaj-kumar-techie" target="_blank">GitHub</a></li>
+            <!-- Add more social links as needed -->
+        </ul>
     </section>
 
-    <section id="skills">
-        <h2>Skills</h2>
-        <div class="skill-category">
-            <h3>Back-end Development</h3>
-            <p>Java, Spring Boot</p>
-        </div>
-        <!-- Repeat similar divs for other skill categories -->
-    </section>
-
-    <section id="projects">
-        <h2>Projects</h2>
-        <p>Project 1: Description of project 1</p>
-        <p>Project 2: Description of project 2</p>
-        <!-- Add more projects as needed -->
-    </section>
-
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <p>Email: pankajkumar.techie@gmail.com</p>
-        <p>LinkedIn: linkedin.com/in/your-profile</p>
-        <p>WhatsApp: <a href="https://wa.me/1234567890">Send me a message</a></p>
-        <p><a href="resume.pdf" download>Download Resume (PDF)</a></p>
-        <!-- Add other contact information as needed -->
-    </section>
-
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>
