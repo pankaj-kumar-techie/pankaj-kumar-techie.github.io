@@ -276,6 +276,30 @@ h6 {
   border-bottom: 3px solid #149ddd;
 }
 
+.btn-resume {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: #149ddd;
+  padding: 12px 20px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-resume i {
+  margin-right: 8px;
+  font-size: 1.2rem;
+}
+
+.btn-resume:hover {
+  background: #2eafec;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+
 @media (min-width: 1024px) {
   #hero {
     background-attachment: fixed;
