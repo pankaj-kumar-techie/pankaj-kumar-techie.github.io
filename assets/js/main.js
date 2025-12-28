@@ -1,9 +1,6 @@
 (function() {
   "use strict";
 
-  /**
-   * Easy selector helper function
-   */
   const select = (el, all = false) => {
     el = el.trim()
     if (all) {
@@ -13,9 +10,6 @@
     }
   }
 
-  /**
-   * Easy event listener function
-   */
   const on = (type, el, listener, all = false) => {
     let selectEl = select(el, all)
     if (selectEl) {
@@ -28,117 +22,60 @@
   }
 
   /**
-   * Easy on scroll event listener 
-   */
-  const onscroll = (el, listener) => {
-    el.addEventListener('scroll', listener)
-  }
-
-  /**
-   * Navbar links active state on scroll
-   */
-  let navbarlinks = select('#navbar .scrollto', true)
-  const navbarlinksActive = () => {
-    let position = window.scrollY + 200
-    navbarlinks.forEach(navbarlink => {
-      if (!navbarlink.hash) return
-      let section = select(navbarlink.hash)
-      if (!section) return
-      if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-        navbarlink.classList.add('active')
-      } else {
-        navbarlink.classList.remove('active')
-      }
-    })
-  }
-  window.addEventListener('load', navbarlinksActive)
-  onscroll(document, navbarlinksActive)
-
-  /**
-   * Scrolls to an element with header offset
+   * Smooth Scroll Logic
    */
   const scrollto = (el) => {
-    let elementPos = select(el).offsetTop
+    let element = select(el);
+    if (!element) return;
     window.scrollTo({
-      top: elementPos,
+      top: element.offsetTop,
       behavior: 'smooth'
     })
   }
 
+  on('click', '.scrollto', function(e) {
+    if (this.hash && select(this.hash)) {
+      e.preventDefault();
+      scrollto(this.hash);
+    }
+  }, true);
+
   /**
-   * Back to top button
+   * Immersive Reveal Observer
+   * This creates the "dopamine" effect by making content arise as you scroll.
+   */
+  const revealElements = select('.reveal', true);
+  if (revealElements && revealElements.length > 0) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { 
+      threshold: 0.15,
+      rootMargin: "0px 0px -50px 0px"
+    });
+    
+    revealElements.forEach(element => {
+      revealObserver.observe(element);
+    });
+  }
+
+  /**
+   * Back to top reveal
    */
   let backtotop = select('.back-to-top')
   if (backtotop) {
     const toggleBacktotop = () => {
-      if (window.scrollY > 100) {
+      if (window.scrollY > 300) {
         backtotop.classList.add('active')
       } else {
         backtotop.classList.remove('active')
       }
     }
     window.addEventListener('load', toggleBacktotop)
-    onscroll(document, toggleBacktotop)
+    window.addEventListener('scroll', toggleBacktotop)
   }
 
-  /**
-   * Mobile nav toggle
-   */
-  on('click', '.mobile-nav-toggle', function(e) {
-    select('body').classList.toggle('mobile-nav-active')
-    select('.nav-menu').classList.toggle('mobile-nav-active')
-    this.classList.toggle('bi-list')
-    this.classList.toggle('bi-x')
-  })
-
-  /**
-   * Scrool with ofset on links with a class name .scrollto
-   */
-  on('click', '.scrollto', function(e) {
-    if (select(this.hash)) {
-      e.preventDefault()
-
-      let body = select('body')
-      if (body.classList.contains('mobile-nav-active')) {
-        body.classList.remove('mobile-nav-active')
-        let navbarToggle = select('.mobile-nav-toggle')
-        navbarToggle.classList.toggle('bi-list')
-        navbarToggle.classList.toggle('bi-x')
-      }
-      scrollto(this.hash)
-    }
-  }, true)
-
-  /**
-   * Scroll with ofset on page load with hash links in the url
-   */
-  window.addEventListener('load', () => {
-    if (window.location.hash) {
-      if (select(window.location.hash)) {
-        scrollto(window.location.hash)
-      }
-    }
-  });
-
-  /**
-   * Animation on scroll - fade in elements
-   */
-  const fadeElements = select('.fade-in', true);
-  if (fadeElements && fadeElements.length > 0) {
-    const fadeInObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          fadeInObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    
-    fadeElements.forEach(element => {
-      fadeInObserver.observe(element);
-    });
-  }
-
-  // End of JavaScript
-
-})()
+})();
