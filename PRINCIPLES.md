@@ -1,34 +1,38 @@
 # Engineering Principles
 
-These principles define my approach to software development, system architecture, and product ownership. They are designed for stability, long-term relevance, and business impact.
+These principles guide how I architect, build, and maintain scalable systems. They are designed to create long-term impact, ensure stability, and empower teams to achieve more.
 
 ## 1. Radical Ownership
-I don't just "complete tasks"; I own the lifecycle of the product. This means:
-- Understanding the "why" before the "how".
-- Anticipating edge cases and failure modes proactively.
-- Ensuring that high-quality documentation exists so the system can outlast my tenure.
+I don't just write code; I own the journey from concept to impact.
+- I understand the "why" before the "how".
+- I anticipate failure modes and edge cases proactively.
+- Documentation and durability are first-class citizens—systems should outlive my tenure.
 
 ## 2. Systems Over Frameworks
-Frameworks and libraries are temporary tools; systems are durable assets. I prioritize:
-- Fundamental engineering patterns (DRY, SOLID, etc.).
-- Low-coupling architecture that allows for tool-agnostic evolution.
-- Building on stable foundations (PostgreSQL, Linux, standard protocols) over chasing experimental hype.
+Frameworks come and go. Systems last.
+- Focus on durable patterns: low-coupling, modularity, and scalability.
+- Build on stable foundations: PostgreSQL, Linux, standard protocols.
+- Frameworks are tools, not crutches.
 
 ## 3. Stability is a Feature
-A fast product that crashes is an unstable liability. I believe that:
+Reliability is as important as innovation.
 - Production-readiness is non-negotiable from Day 1.
-- Observability and monitoring are as important as the feature itself.
-- Automated testing is a tool for confidence and speed, not a checkbox.
+- Observability, monitoring, and testing are baked in, not afterthoughts.
+- A fast product that crashes is a liability, not an achievement.
 
 ## 4. Clear Communication
-Technical complexity should never be an excuse for poor communication.
-- I bridge the gap between technical teams and stakeholders using direct, no-fluff language.
-- I treat "Readability" in code as a first-class citizen—code is written for humans to read, and machines to execute.
+Complexity should never block clarity.
+- I bridge technical teams and stakeholders with jargon-free updates.
+- Code is written for humans first, machines second.
+- Decisions are shared transparently to prevent surprises.
 
 ## 5. Cost-Aware Architecture
-Every architectural decision is a financial decision.
-- I design systems that scale efficiently in terms of both compute and dollars.
-- I believe in "Minimum Viable Complexity"—don't over-engineer for a scale you haven't reached yet, but build with the flexibility to grow when you do.
+Every decision has a financial footprint.
+- Systems must scale efficiently in compute and cost.
+- I aim for "Minimum Viable Complexity" but ensure the system can grow when required.
+- Long-term maintainability and flexibility guide architectural choices.
 
 ---
-*Pankaj Kumar | 2026–2030 Portfolio Focus*
+
+*Pankaj Kumar | 2026–2030 Portfolio Focus*  
+Hosted at: [https://pankaj-kumar-techie.github.io/](https://pankaj-kumar-techie.github.io/)

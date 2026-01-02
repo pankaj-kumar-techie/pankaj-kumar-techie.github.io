@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pankajkumar.tech/sitemap.xml
+Sitemap: https://pankaj-kumar-techie.github.io/sitemap.xml
