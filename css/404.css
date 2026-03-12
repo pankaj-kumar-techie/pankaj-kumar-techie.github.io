@@ -1,0 +1,54 @@
+/* ─── PANKAJ.AI 404 STYLES ─── */
+:root {
+  --accent: var(--cyan);
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.content {
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  padding: 20px;
+}
+
+.error-code {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(80px, 20vw, 160px);
+  font-weight: 900;
+  color: var(--red);
+  text-shadow: 0 0 40px rgba(255, 51, 85, 0.4);
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.error-msg {
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: var(--dim);
+  margin-bottom: 40px;
+  text-transform: uppercase;
+}
+
+.btn-back {
+  display: inline-block;
+  padding: 14px 28px;
+  border: 1px solid var(--cyan);
+  color: var(--cyan);
+  text-decoration: none;
+  letter-spacing: 0.15em;
+  transition: all 0.3s;
+  background: rgba(0, 255, 200, 0.05);
+}
+
+.btn-back:hover {
+  background: var(--cyan);
+  color: var(--void);
+  box-shadow: 0 0 30px rgba(0, 255, 200, 0.4);
+}
