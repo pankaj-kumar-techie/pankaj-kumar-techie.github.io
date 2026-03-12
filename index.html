@@ -2,247 +2,339 @@
 <html lang="en">
 
 <head>
-  <!-- Basic Page Needs -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Pankaj Kumar – Senior Java Backend Engineer | Spring Boot | Microservices | Cloud (AWS, GCP)</title>
-
-  <!-- SEO -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0" />
+  <title>PANKAJ.AI — AI Agent Architect</title>
   <meta name="description"
-    content="Senior Systems Architect helping teams build scalable, high-performance systems with clarity and calm.">
-  <link rel="canonical" href="https://pankaj-kumar-techie.github.io">
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Pankaj Kumar – Senior Java Backend Engineer | Spring Boot | Microservices | Cloud (AWS, GCP)">
+    content="Pankaj AI — Architecting autonomous agents that save 15+ hours/week. Specializing in OpenClaw, RAG pipelines, and n8n automation for high-growth teams." />
+  <meta name="keywords" content="AI Agent, OpenClaw, RAG, n8n, Automation, SaaS MVP, Pankaj Kumar, AI Architect" />
+  <meta name="author" content="Pankaj Kumar" />
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://pankaj.ai/" />
+  <meta property="og:title" content="PANKAJ.AI — AI Agent Architect" />
   <meta property="og:description"
-    content="I help teams build scalable systems that perform reliably and grow gracefully.">
-  <meta property="og:url" content="https://pankaj-kumar-techie.github.io">
-  <meta property="og:image" content="https://pankaj-kumar-techie.github.io/assets/img/profile-pic.png">
-
+    content="Architecting autonomous agents that save 15+ hours/week. mission-driven AI automation." />
+  <meta property="og:image" content="assets/og-image.png" />
   <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Pankaj Kumar – Senior Java Backend Engineer | Spring Boot | Microservices | Cloud (AWS, GCP)">
-  <meta name="twitter:description"
-    content="I help teams build scalable systems that perform reliably and grow gracefully.">
-  <meta name="twitter:image" content="https://pankaj-kumar-techie.github.io/assets/img/profile-pic.png">
-
-  <!-- Favicon -->
-  <link rel="icon" href="https://pankaj-kumar-techie.github.io/assets/img/favicon.ico" type="image/x-icon">
-
-  <!-- CSS -->
-  <link href="assets/css/style.css" rel="stylesheet">
-
-  <!-- Bootstrap Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Schema.org -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Pankaj Kumar",
-    "jobTitle": "Senior Systems Architect",
-    "url": "https://pankaj-kumar-techie.github.io",
-    "image": "https://pankaj-kumar-techie.github.io/assets/img/profile-pic.png",
-    "sameAs": [
-      "https://github.com/pankaj-kumar-techie"
-    ]
-  }
-  </script>
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://pankaj.ai/" />
+  <meta property="twitter:title" content="PANKAJ.AI — AI Agent Architect" />
+  <meta property="twitter:description"
+    content="Architecting autonomous agents that save 15+ hours/week. mission-driven AI automation." />
+  <meta property="twitter:image" content="assets/og-image.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;800&display=swap"
+    rel="stylesheet">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
+  <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
 
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-    <div class="hero-blueprint"></div>
-    <div class="hero-container">
-      <div class="hero-avatar-wrapper reveal">
-        <img src="assets/img/profile-pic.png" class="hero-avatar" alt="Pankaj Kumar">
+  <!-- CURSOR -->
+  <div id="cur"></div>
+  <div id="cur-trail"></div>
+
+  <!-- HUD CORNERS -->
+  <div class="hud-corner hc-tl"></div>
+  <div class="hud-corner hc-tr"></div>
+  <div class="hud-corner hc-bl"></div>
+  <div class="hud-corner hc-br"></div>
+
+  <!-- NEURAL NETWORK CANVAS -->
+  <canvas id="neural"></canvas>
+
+  <!-- STATUS BAR -->
+  <div id="statusbar">
+    <div class="sb-left">
+      <div class="sb-logo">PANKAJ.AI</div>
+      <span class="sb-sep">|</span>
+      <div class="sb-status">
+        <span class="online-dot"></span>
+        AGENT ONLINE
       </div>
-      <h1 class="hero-name">Pankaj Kumar</h1>
-      <p class="hero-pitch">
-        Imagine a system that never fails, scales effortlessly, and grows with your ambitions. I make that a reality.
+    </div>
+    <div class="sb-right">
+      <span id="live-clock">--:--:--</span>
+      <span class="sb-sep">|</span>
+      <!-- <span style="color:var(--dim)">IST · MANDI IN</span> -->
+      <a href="#contact" class="sb-hire">HIRE ME</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="photo-zone">
+      <img src="assets/pankaj-ai.jpg" alt="Pankaj Kumar - AI Architect">
+      <!-- HUD overlays on photo -->
+      <div class="hud-data hd-tl">
+        <div class="hd-line">AGENT_ID: PK-0x7F3A</div>
+        <div class="hd-line">STATUS: ACTIVE</div>
+        <div class="hd-line">UPTIME: 99.8%</div>
+      </div>
+      <div class="hud-data hd-br">
+        <div class="hd-line">OPENCLAW CERTIFIED</div>
+        <div class="hd-line">UPWORK · RISING TALENT</div>
+        <div class="hd-line">100% JOB SUCCESS</div>
+      </div>
+    </div>
+
+    <!-- Biometric scan ring on face -->
+    <div class="scan-ring">
+      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="95" stroke="rgba(0,255,200,0.3)" stroke-width="1" stroke-dasharray="8 4" />
+        <circle cx="100" cy="100" r="80" stroke="rgba(0,255,200,0.15)" stroke-width="0.5" />
+        <path d="M100 5 L100 20" stroke="#00ffc8" stroke-width="1.5" />
+        <path d="M100 180 L100 195" stroke="#00ffc8" stroke-width="1.5" />
+        <path d="M5 100 L20 100" stroke="#00ffc8" stroke-width="1.5" />
+        <path d="M180 100 L195 100" stroke="#00ffc8" stroke-width="1.5" />
+        <circle cx="100" cy="100" r="4" fill="#00ffc8" opacity="0.8" />
+        <path d="M50 100 Q100 60 150 100" stroke="rgba(0,255,200,0.5)" stroke-width="0.8" fill="none" />
+        <text x="100" y="130" text-anchor="middle" fill="rgba(0,255,200,0.6)" font-family="Share Tech Mono"
+          font-size="8" letter-spacing="2">BIOMETRIC</text>
+      </svg>
+      <div class="scan-label">▸ IDENTITY VERIFIED ◂</div>
+    </div>
+
+    <div class="hero-text">
+      <div class="hero-tag">AI AGENT ARCHITECT · AVAILABLE NOW</div>
+
+      <h1 class="hero-name">
+        <span class="hn-1">
+          <span class="glitch-wrap" data-text="PANKAJ">PANKAJ</span>
+        </span>
+        <span class="hn-2" data-t="KUMAR">KUMAR</span>
+      </h1>
+
+      <p class="hero-sub">
+        I build <span>autonomous AI systems</span> that<br>
+        work 24/7 — while you focus on growth.
       </p>
-      <div class="hero-cta-container">
-        <a href="#cta" class="btn btn-primary contact-btn">Let’s Talk</a>
-        <a href="https://github.com/pankaj-kumar-techie" target="_blank" class="btn btn-outline-github">
-          <i class="bi bi-github"></i> Source Authority
+
+      <div class="hero-stats-row">
+        <div class="hs">
+          <span class="hs-n" data-count="100" data-suffix="%">0</span>
+          <span class="hs-l">JOB SUCCESS</span>
+        </div>
+        <div class="hs-div"></div>
+        <div class="hs">
+          <span class="hs-n">5.0★</span>
+          <span class="hs-l">UPWORK</span>
+        </div>
+        <div class="hs-div"></div>
+        <div class="hs">
+          <span class="hs-n" data-count="4">0</span>
+          <span class="hs-l">COUNTRIES</span>
+        </div>
+      </div>
+
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-a">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+          </svg>
+          INITIATE PROJECT
+        </a>
+        <a href="#work" class="btn-b">VIEW WORK ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="mq">
+    <div class="mq-inner">
+      <span>OpenClaw Agents</span><span>RAG Pipelines</span><span>LangChain</span>
+      <span>n8n Automation</span><span>WhatsApp AI</span><span>OpenAI</span>
+      <span>Pinecone</span><span>Lead Qualification</span><span>FastAPI</span>
+      <span>Next.js SaaS</span><span>AI Chief of Staff</span><span>100% Job Success</span>
+      <span>OpenClaw Agents</span><span>RAG Pipelines</span><span>LangChain</span>
+      <span>n8n Automation</span><span>WhatsApp AI</span><span>OpenAI</span>
+      <span>Pinecone</span><span>Lead Qualification</span><span>FastAPI</span>
+      <span>Next.js SaaS</span><span>AI Chief of Staff</span><span>100% Job Success</span>
+    </div>
+  </div>
+
+  <!-- TERMINAL BOT CHAT -->
+  <div id="terminal">
+    <div class="term-header">
+      <div class="term-dot" style="background:#ff5f57"></div>
+      <div class="term-dot" style="background:#febc2e"></div>
+      <div class="term-dot" style="background:#28c840"></div>
+      <span class="term-title">pankaj_ai.agent — interactive terminal</span>
+    </div>
+    <div class="term-body" id="term-body">
+      <!-- messages injected by JS -->
+    </div>
+    <div class="term-input-row">
+      <span class="term-prompt">&gt;_</span>
+      <input class="term-input" id="term-input" type="text" placeholder="Ask me anything about AI agents..."
+        autocomplete="off" spellcheck="false" />
+      <button class="term-send" onclick="sendMessage()">SEND</button>
+    </div>
+  </div>
+
+  <!-- CAPABILITIES -->
+  <section class="section" id="cap">
+    <div class="s-tag">Capabilities</div>
+    <h2 class="s-head">WHAT<br>I BUILD</h2>
+    <div class="cap-grid">
+      <div class="cap-card">
+        <span class="cap-n">MODULE_01</span>
+        <span class="cap-icon">🤖</span>
+        <div class="cap-name">OPENCLAW AGENTS</div>
+        <div class="cap-desc">Autonomous agents on your stack — WhatsApp, Slack, Discord. Zero human input required.
+        </div>
+        <div class="cap-tags"><span class="ct">OpenClaw</span><span class="ct">WhatsApp</span><span
+            class="ct">Slack</span></div>
+      </div>
+      <div class="cap-card">
+        <span class="cap-n">MODULE_02</span>
+        <span class="cap-icon">🧠</span>
+        <div class="cap-name">RAG CHATBOTS</div>
+        <div class="cap-desc">AI trained on YOUR data. Knows your business. Deployed in days, not weeks.</div>
+        <div class="cap-tags"><span class="ct">RAG</span><span class="ct">Pinecone</span><span class="ct">OpenAI</span>
+        </div>
+      </div>
+      <div class="cap-card">
+        <span class="cap-n">MODULE_03</span>
+        <span class="cap-icon">⚡</span>
+        <div class="cap-name">AUTOMATION</div>
+        <div class="cap-desc">Leads, emails, docs — automated end to end. 15+ hrs/week reclaimed per client.</div>
+        <div class="cap-tags"><span class="ct">n8n</span><span class="ct">APIs</span><span class="ct">Make</span></div>
+      </div>
+      <div class="cap-card">
+        <span class="cap-n">MODULE_04</span>
+        <span class="cap-icon">🚀</span>
+        <div class="cap-name">MVP → SAAS</div>
+        <div class="cap-desc">Idea to live product in weeks. Next.js + AI + Stripe. Zero revisions track record.</div>
+        <div class="cap-tags"><span class="ct">Next.js</span><span class="ct">FastAPI</span><span class="ct">AWS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICS -->
+  <section id="metrics" class="section">
+    <div class="s-tag">Performance Data</div>
+    <h2 class="s-head">RESULTS<br>LOG</h2>
+    <div class="metrics-grid">
+      <div class="met">
+        <span class="met-num" data-count="2" data-suffix="×">0</span>
+        <div class="met-label">Conversion Rate<br>Increase</div>
+      </div>
+      <div class="met">
+        <span class="met-num" data-count="85" data-suffix="%">0</span>
+        <div class="met-label">Emails Handled<br>Autonomously</div>
+      </div>
+      <div class="met">
+        <span class="met-num" data-count="15" data-suffix="h">0</span>
+        <div class="met-label">Hours Saved<br>Per Week</div>
+      </div>
+      <div class="met">
+        <span class="met-num" data-count="99" data-suffix="%">0</span>
+        <div class="met-label">System<br>Uptime</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK LOG -->
+  <section class="section" id="work">
+    <div class="s-tag">Mission Log</div>
+    <h2 class="s-head">DEPLOYED<br>SYSTEMS</h2>
+    <div class="log-list" id="mission-log-container">
+      <!-- Dynamic Content from js/data.js -->
+    </div>
+    <div class="more-missions">
+      <a href="missions.html" class="btn-more">
+        <span class="btn-text">EXPLORE FULL ARCHIVE</span>
+        <span class="btn-icon">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- PROOF -->
+  <section class="section" id="proof">
+    <div class="s-tag">Client Feedback</div>
+    <h2 class="s-head">MISSION<br>REPORTS</h2>
+    <div class="proof-list" id="reviews-container">
+      <!-- Dynamic Content from js/data.js -->
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section class="section" id="stack">
+    <div class="s-tag">System Specs</div>
+    <h2 class="s-head">TECH<br>STACK</h2>
+    <div class="stack-groups">
+      <div class="sg">
+        <div class="sg-label">AI / LLM ENGINES</div>
+        <div class="sg-pills"><span class="pill hot">OpenClaw</span><span class="pill hot">OpenAI API</span><span
+            class="pill hot">LangChain</span><span class="pill hot">RAG Pipelines</span><span
+            class="pill hot">Pinecone</span><span class="pill">Ollama</span></div>
+      </div>
+      <div class="sg">
+        <div class="sg-label">AUTOMATION LAYER</div>
+        <div class="sg-pills"><span class="pill hot">n8n</span><span class="pill hot">WhatsApp API</span><span
+            class="pill warm">Telegram</span><span class="pill warm">Gmail API</span><span class="pill">Make</span><span
+            class="pill">Zapier</span></div>
+      </div>
+      <div class="sg">
+        <div class="sg-label">BACKEND SYSTEMS</div>
+        <div class="sg-pills"><span class="pill hot">Python / FastAPI</span><span class="pill warm">Node.js</span><span
+            class="pill warm">PostgreSQL</span><span class="pill warm">AWS</span><span class="pill">Docker</span><span
+            class="pill">Spring Boot</span></div>
+      </div>
+      <div class="sg">
+        <div class="sg-label">FRONTEND / SAAS</div>
+        <div class="sg-pills"><span class="pill warm">Next.js</span><span class="pill warm">React</span><span
+            class="pill warm">TypeScript</span><span class="pill">Stripe</span><span class="pill">Supabase</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="ct-inner">
+      <div class="ct-avail"><span class="online-dot"></span> AGENT ONLINE · RESPONDS IN &lt;4HRS</div>
+      <h2 class="ct-head">
+        <span class="ct-h1">START A</span>
+        <span class="ct-h2">MISSION</span>
+      </h2>
+      <p class="ct-sub">Tell me what you need automated. I'll come back with a plan and clear estimate within hours.</p>
+      <div class="channels">
+        <a href="mailto:pankajkr.tech@gmail.com" class="ch ch-email">
+          <span class="ch-icon">✉</span>
+          <span class="ch-label">EMAIL</span>
+          <span class="ch-desc">DIRECT CONTACT</span>
+        </a>
+        <a href="https://discord.com/users/pankajkumar_dev" target="_blank" class="ch ch-discord">
+          <span class="ch-icon">◈</span>
+          <span class="ch-label">DISCORD</span>
+          <span class="ch-desc">INSTANT DM</span>
+        </a>
+        <a href="https://www.upwork.com/freelancers/pankajkumar" target="_blank" class="ch ch-upwork">
+          <span class="ch-icon">◉</span>
+          <span class="ch-label">UPWORK</span>
+          <span class="ch-desc">HIRE OFFICIALLY</span>
+        </a>
+        <a href="https://github.com/pankaj-kumar-techie" target="_blank" class="ch ch-github">
+          <span class="ch-icon">◎</span>
+          <span class="ch-label">GITHUB</span>
+          <span class="ch-desc">VIEW CODE</span>
         </a>
       </div>
-    </div>
-  </section>
-  <!-- End Hero -->
-
-  <!-- ======= How I Work Section ======= -->
-  <section id="about" class="about reveal">
-    <div class="container">
-      <div class="section-title">
-        <h2>My Approach</h2>
-        <p>Every system I touch is built with clarity, stability, and end-to-end technical ownership.</p>
-      </div>
-
-      <div class="row align-items-center">
-        <div class="col-lg-12 content">
-          <h3>Architecting for Outcomes</h3>
-          <p class="about-intro">
-            Picture a complex challenge—millions of users, unpredictable loads, high stakes. I design
-            <strong>high-performance systems</strong> that tackle it head-on. Over 5+ years, I’ve turned chaos into
-            reliable, maintainable, and scalable software, delivering measurable impact.
-          </p>
-
-          <div class="expertise-areas">
-            <div class="expertise-item reveal">
-              <i class="bi bi-shield-check"></i>
-              <div>
-                <strong>Strategic Ownership</strong>
-                <p>Taking full responsibility when products are complex, high-risk, or at a tipping point.</p>
-              </div>
-            </div>
-            <div class="expertise-item reveal">
-              <i class="bi bi-cpu"></i>
-              <div>
-                <strong>Scalable Architecture</strong>
-                <p>Systems that don’t just work today—they grow tomorrow without compromise.</p>
-              </div>
-            </div>
-            <div class="expertise-item">
-              <i class="bi bi-chat-left-text"></i>
-              <div>
-                <strong>Clear Communication</strong>
-                <p>Translating technical complexity into actionable clarity for teams and stakeholders.</p>
-              </div>
-            </div>
-            <div class="expertise-item">
-              <i class="bi bi-tools"></i>
-              <div>
-                <strong>Durable Engineering</strong>
-                <p>Choosing tools for performance, cost-efficiency, and long-term maintainability.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-  <!-- End How I Work Section -->
-
-  <!-- ======= What I Build Section ======= -->
-  <section id="impact" class="impact reveal">
-    <div class="container">
-
-      <div class="section-title">
-        <h2>What I Build</h2>
-        <p>Scenes from the frontlines of engineering complexity:</p>
-
-      </div>
-
-      <div class="impact-grid">
-        <div class="impact-card reveal glass-card">
-          <div class="impact-icon"><i class="bi bi-cpu"></i></div>
-          <h3>High-Scale Systems</h3>
-          <p>Envision a system handling <strong>millions of daily requests</strong> without a glitch—99.99% uptime is
-            just the beginning.</p>
-          </p>
-        </div>
-
-        <div class="impact-card reveal glass-card">
-          <div class="impact-icon"><i class="bi bi-lightning-charge"></i></div>
-          <h3>Rapid Product Launch</h3>
-          <p>Helped teams deploy MVPs from blueprint to launch in <strong>under 3 months</strong>.</p>
-        </div>
-
-        <div class="impact-card reveal glass-card">
-          <div class="impact-icon"><i class="bi bi-graph-up-arrow"></i></div>
-          <h3>Efficiency Optimization</h3>
-          <p>Cut costs by <strong>40%</strong> while making systems <strong>60% faster</strong>. Every line of code
-            counts.</p>
-          </p>
-        </div>
+      <div class="ct-footer">
+        © 2026 PANKAJ KUMAR · AI AGENT ARCHITECT · MANDI, INDIA<br>
+        ALL SYSTEMS OPERATIONAL · UPTIME 99.8%
       </div>
     </div>
   </section>
-  <!-- End What I Build Section -->
-
-  <!-- ======= Partnership Section ======= -->
-  <section id="collaboration" class="services section-bg reveal">
-    <div class="container">
-      <div class="section-title">
-        <h2>Collaboration</h2>
-        <p>Everything on the table. No surprises, just clarity.</p>
-      </div>
-      <div class="row g-4 text-center justify-content-center">
-        <div class="col-lg-4 col-md-6">
-          <div class="collaboration-card">
-            <i class="bi bi-eye"></i>
-            <h5>Transparency</h5>
-            <p>Honest, clear communication about feasibility and constraints.</p>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="collaboration-card">
-            <i class="bi bi-person-check"></i>
-            <h5>Ownership</h5>
-            <p>I’m accountable for results, not just code delivery.</p>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="collaboration-card">
-            <i class="bi bi-lightning-charge"></i>
-            <h5>Velocity</h5>
-            <p>Fast, smart execution without shortcuts that haunt later.</p>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="collaboration-card">
-            <i class="bi bi-shield-shaded"></i>
-            <h5>Integrity</h5>
-            <p>Maintaining engineering standards under all circumstances.</p>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="collaboration-card">
-            <i class="bi bi-graph-up-arrow"></i>
-            <h5>Scalability</h5>
-            <p>Planning 10x ahead to ensure smooth growth without friction.</p>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="collaboration-card">
-            <i class="bi bi-alt"></i>
-            <h5>Modularity</h5>
-            <p>Decoupled systems that are easy to evolve, adapt, and maintain.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======= CTA Section ======= -->
-  <section id="cta" class="cta reveal">
-    <div class="container">
-      <div class="cta-content">
-        <h2>Let’s Build Something Durable</h2>
-        <p>
-          This is your trailer moment: complex challenges, high stakes, measurable impact. If stability and scalable
-          success matter, let’s make it happen.
-        </p>
-        <div class="cta-buttons">
-          <a href="mailto:pankajkumar.techie@gmail.com" class="cta-btn">Send an Inquiry</a>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- End CTA Section -->
-
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/terminal.js"></script>
+  <script src="js/core.js"></script>
 </body>
 
 </html>

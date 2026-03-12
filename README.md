@@ -1,58 +1,33 @@
-# Pankaj Kumar — Systems Architect Portfolio
+# PANKAJ.AI - Professional Portfolio
 
-This repository powers my personal portfolio website, built to reflect how I design **real-world software systems**:  
-clear, durable, scalable, and outcome-driven.
+Professional AI Agent Architect portfolio featuring a futuristic terminal interface, neural network visualizations, and project mission logs.
 
-🌐 **Live Site:** https://pankaj-kumar-techie.github.io/
+## Architecture
 
----
+- **Static Pages**: HTML5 + Vanilla CSS + JavaScript.
+- **Dynamic Content**: Data-driven rendering for projects and reviews via `js/data.js`.
+- **System Components**:
+  - `js/core.js`: Neural canvas, global animations, and HUD logic.
+  - `js/terminal.js`: Interactive terminal simulation with command parsing.
+  - `css/core.css`: Global design system and layout.
+  - `css/index.css`: Page-specific styles for the landing page.
+  - `css/case-study.css`: Dynamic styling for project pages with theme support.
 
-## Why This Portfolio Exists
+## Asset Directory
 
-This is not a flashy UI demo or a collection of buzzwords.
+- `assets/pankaj-ai.png`: Professional portrait (AI generated).
+- `assets/og-image.png`: Open Graph preview image (AI generated).
 
-It is a **deliberate, minimal system** that communicates how I think, build, and collaborate as a **Systems Architect**.
+## Tech Stack
 
-Every decision—from content structure to deployment—mirrors how I approach production software:
-- clarity over cleverness  
-- stability over hype  
-- systems over tools  
+- **Frontend**: HTML5, CSS3 (Variables, Keyframe Animations), Modern JS (IntersectionObserver, Canvas API).
+- **Fonts**: Orbitron, Share Tech Mono, Exo 2 (Google Fonts).
+- **AI Specialties**: OpenClaw, RAG Pipelines, n8n Automation.
 
----
+## Mission Logs
 
-## What This Site Communicates
-
-Visitors should understand, within seconds:
-
-- How I think about **architecture and ownership**
-- What kind of problems I solve **best**
-- What it feels like to **work with me**
-- Why durability and scale are non-negotiable
-
-This site is intentionally story-driven, like a **technical trailer**, not a résumé.
-
----
-
-## Usage
-
-1. **Clone the repository:**
-    ```bash
-    git clone https://github.com/pankaj-kumar-techie/portfolio.git
-    cd portfolio
-    ```
-
-2. **Customize (Optional):**
-   - Adjust HTML, CSS, and JS if you want to personalize sections or styling.
-   - Update projects, achievements, or toolbox examples.
-
-3. **Host the Portfolio:**
-   - Hosted at [https://pankaj-kumar-techie.github.io/](https://pankaj-kumar-techie.github.io/)
-   - Share your story and technical impact with the world.
-
-## Contributing
-
-Contributions are welcome! Enhance storytelling, UI, or add new examples of impact. Pull requests are appreciated.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
+- Mission 01: Lead Qualification Engine
+- Mission 02: Email Automation Manager
+- Mission 03: AI Chief of Staff
+- Mission 04: Real Estate Operations SaaS
+- Mission 05: Reddit Lead Gen Bot
