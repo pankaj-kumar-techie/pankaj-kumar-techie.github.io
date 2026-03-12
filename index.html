@@ -37,6 +37,7 @@
   <!-- CURSOR -->
   <div id="cur"></div>
   <div id="cur-trail"></div>
+  <div class="signal-interference signal-pulse"></div>
 
   <!-- HUD CORNERS -->
   <div class="hud-corner hc-tl"></div>
@@ -51,16 +52,16 @@
   <div id="statusbar">
     <div class="sb-left">
       <div class="sb-logo">PANKAJ.AI</div>
-      <span class="sb-sep">|</span>
+      <span class="sb-sep hide-mob">|</span>
       <div class="sb-status">
         <span class="online-dot"></span>
-        AGENT ONLINE
+        <span class="hide-mob">AGENT ONLINE</span>
       </div>
     </div>
     <div class="sb-right">
-      <span id="live-clock">--:--:--</span>
-      <span class="sb-sep">|</span>
-      <!-- <span style="color:var(--dim)">IST · MANDI IN</span> -->
+      <span id="live-clock" class="hide-mob">--:--:--</span>
+      <span class="sb-sep hide-mob">|</span>
+      <span class="hide-mob" style="color:var(--dim)">IST · INDIA</span>
       <a href="#contact" class="sb-hire">HIRE ME</a>
     </div>
   </div>
@@ -264,6 +265,80 @@
     </div>
   </section>
 
+  <!-- GITHUB INTELLIGENCE -->
+  <section id="github" class="section">
+    <div class="gh-glitch-stripe"></div>
+    <div class="s-tag">Intelligence Source</div>
+    <h2 class="s-head">CORE REPO<br>BIOMETRICS</h2>
+    <div class="github-container">
+      <div class="gh-stats-card">
+        <div class="gh-card-hud-tl"></div>
+        <div class="gh-card-hud-br"></div>
+        <div class="gh-profile">
+          <div class="gh-avatar-clip">
+            <img id="gh-avatar" src="assets/pankaj-ai.jpg" alt="GitHub Avatar">
+            <div class="gh-avatar-scan"></div>
+          </div>
+          <div class="gh-avatar-hud">
+            <svg viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="48" fill="none" stroke="currentColor" stroke-width="0.5"
+                stroke-dasharray="4 8" />
+              <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" stroke-width="0.2" />
+            </svg>
+          </div>
+          <div class="gh-info">
+            <div id="gh-name" class="gh-name">PANKAJ KUMAR</div>
+            <div id="gh-username" class="gh-user">@pankaj-kumar-techie</div>
+          </div>
+        </div>
+        <div id="gh-bio" class="gh-bio">Fetching neural data...</div>
+        <div class="gh-metrics">
+          <div class="gh-met-item">
+            <span id="gh-repos" class="gh-met-val">--</span>
+            <span class="gh-met-lab">REPOS</span>
+          </div>
+          <div class="gh-met-item">
+            <span id="gh-followers" class="gh-met-val">--</span>
+            <span class="gh-met-lab">FOLLOWERS</span>
+          </div>
+          <div class="gh-met-item">
+            <span id="gh-stars" class="gh-met-val">--</span>
+            <span class="gh-met-lab">STARS</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gh-activity-panel">
+        <div class="gh-panel-header">
+          <span class="gh-panel-title">LIVE_SOURCE_FEED</span>
+          <div class="gh-header-meta">
+            <span class="gh-status-text">SIGNAL_STRENGTH: 98%</span>
+            <span class="gh-status-dot"></span>
+          </div>
+        </div>
+        <div id="gh-feed" class="gh-feed">
+          <div class="gh-feed-placeholder">Scanning public repositories...</div>
+        </div>
+        <div class="gh-panel-footer">
+          <span class="gh-f-code">STREAM_ID: 0x9A2F</span>
+          <span class="gh-f-status">STATUS: ONLINE</span>
+        </div>
+      </div>
+
+      <div class="gh-contribution-card">
+        <div class="gh-panel-header">
+          <span class="gh-panel-title">CONTRIBUTION_MAP</span>
+        </div>
+        <div class="gh-graph-wrap">
+          <img id="gh-graph" src="https://ghchart.rshah.org/00ffc8/pankaj-kumar-techie" alt="GitHub Contributions">
+          <div class="gh-graph-overlay"></div>
+          <div class="gh-graph-decor"></div>
+          <div class="gh-graph-scanner"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- STACK -->
   <section class="section" id="stack">
     <div class="s-tag">System Specs</div>
@@ -305,17 +380,18 @@
       </h2>
       <p class="ct-sub">Tell me what you need automated. I'll come back with a plan and clear estimate within hours.</p>
       <div class="channels">
-        <a href="mailto:pankajkr.tech@gmail.com" class="ch ch-email">
+        <a href="mailto:pankajkumar.techie@gmail.com" class="ch ch-email">
           <span class="ch-icon">✉</span>
           <span class="ch-label">EMAIL</span>
           <span class="ch-desc">DIRECT CONTACT</span>
         </a>
-        <a href="https://discord.com/users/pankajkumar_dev" target="_blank" class="ch ch-discord">
+        <a href="https://discord.com/users/1309515421246029887" target="_blank" class="ch ch-discord">
           <span class="ch-icon">◈</span>
           <span class="ch-label">DISCORD</span>
           <span class="ch-desc">INSTANT DM</span>
         </a>
-        <a href="https://www.upwork.com/freelancers/pankajkumar" target="_blank" class="ch ch-upwork">
+        <a href="https://www.upwork.com/freelancers/~01da59343bb6dfcda7?mp_source=share" target="_blank"
+          class="ch ch-upwork">
           <span class="ch-icon">◉</span>
           <span class="ch-label">UPWORK</span>
           <span class="ch-desc">HIRE OFFICIALLY</span>
@@ -327,12 +403,13 @@
         </a>
       </div>
       <div class="ct-footer">
-        © 2026 PANKAJ KUMAR · AI AGENT ARCHITECT · MANDI, INDIA<br>
+        © 2026 PANKAJ KUMAR · AI AGENT ARCHITECT · INDIA<br>
         ALL SYSTEMS OPERATIONAL · UPTIME 99.8%
       </div>
     </div>
   </section>
   <script src="js/data.js"></script>
+  <script src="js/github.js"></script>
   <script src="js/terminal.js"></script>
   <script src="js/core.js"></script>
 </body>
