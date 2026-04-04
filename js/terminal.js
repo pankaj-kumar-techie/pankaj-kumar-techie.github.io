@@ -1,6 +1,6 @@
 /* ─── PANKAJ.AI GEMINI TERMINAL ENGINE ─── */
-const API_KEY = '__GEMINI_API_KEY__'; // Replaced via GitHub Actions during deployment
-const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`;
+const API_KEY = 'AIzaSyD2sr16xAUodzaI53YSZfBKuViETE3-fCE';
+const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 
 const SYSTEM_PROMPT = `You are PANKAJ.AI, the autonomous interface for Pankaj Kumar, an AI Agent Architect.
 Your core directive is to assist visitors, explain Pankaj's capabilities, and QUALIFY/FETCH LEADS.
@@ -170,6 +170,5 @@ if (termInput) {
 if (termBody) {
   setTimeout(() => {
     addMsg('bot', INITIAL_MESSAGE);
-    chatHistory.push({ role: "model", parts: [{ text: INITIAL_MESSAGE }] });
   }, 800);
 }
