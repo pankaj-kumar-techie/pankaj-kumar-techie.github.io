@@ -45,6 +45,33 @@ const PANKAJ_DB = {
       description: 'Autonomous system monitoring 50+ subreddits, identifies buying intent signals, routes qualified prospects to Discord instantly. Delivers 8-12 qualified leads daily.',
       chips: ['24/7 Monitor', 'Intent Signals', 'n8n + AI'],
       url: 'portfolio.html?portfolio=reddit-lead-gen'
+    },
+    {
+      id: 'MISSION_06',
+      code: 'WHATSAPP AI',
+      name: 'AI WhatsApp Business Briefing Assistant',
+      tagline: 'Daily WhatsApp briefings that aggregate key business metrics across platforms.',
+      description: 'Built an OpenClaw-based assistant that aggregates sales, ads, traffic, and inbox insights into one concise WhatsApp briefing every morning.',
+      chips: ['Daily Briefings', 'Zero Dashboard', 'Multi-platform'],
+      url: 'portfolio.html?portfolio=whatsapp-briefing'
+    },
+    {
+      id: 'MISSION_07',
+      code: 'MARKETING AI',
+      name: 'AI Marketing & Content Automation Suite',
+      tagline: 'Automates ad creation, campaign planning, and content production across Meta, Google, and more.',
+      description: 'A multi-functional AI system that generates ad copy, builds campaign plans, produces content, and analyzes performance automatically.',
+      chips: ['Ad Copy Generator', 'Campaign Planner', 'Content Repurposing'],
+      url: 'portfolio.html?portfolio=marketing-automation'
+    },
+    {
+      id: 'MISSION_08',
+      code: 'AGENT SUITE',
+      name: 'AI Multi-Agent System for Digital Companies',
+      tagline: 'Scalable multi-agent AI system to automate operations, marketing, and content for digital businesses.',
+      description: 'A unified multi-agent platform that automates sales, campaigns, creative delivery, and team workflows across Salesforce, Slack, and internal tools.',
+      chips: ['Sales Automation', 'Creative AI', 'Real-time Alerts'],
+      url: 'portfolio.html?portfolio=multi-agent-system'
     }
   ],
   reviews: [
@@ -70,10 +97,15 @@ const PANKAJ_DB = {
 };
 
 // ─── DYNAMIC RENDERER ───
+const HOME_FEATURED_PROJECTS = 3;
+
 function renderMissionLog() {
   const container = document.getElementById('mission-log-container');
   if (!container) return;
-  container.innerHTML = PANKAJ_DB.projects.map(p => `
+
+  const featuredProjects = PANKAJ_DB.projects.slice(0, HOME_FEATURED_PROJECTS);
+
+  container.innerHTML = featuredProjects.map(p => `
     <a href="${p.url}" class="log">
       <div class="log-id">${p.id} · ${p.code}</div>
       <div class="log-name">${p.name}</div>

@@ -181,7 +181,7 @@ const PORTFOLIO_DATA = {
     chips: ['24/7 Monitor', 'Intent Signals', 'n8n + AI'],
     theme: 'red',
     prev_mission: 'real-estate-saas',
-    next_mission: null,
+    next_mission: 'whatsapp-briefing',
 
     brief: 'Built a fully autonomous Reddit lead discovery system that monitors 50+ subreddits 24/7, identifies buying intent signals in real-time, and routes qualified prospects directly to Discord. Zero manual review. Delivers 8-12 qualified leads daily.',
     problem: 'Client was manually browsing Reddit for inbound demand signals. Finding leads was inefficient (1-2 hours/day) and random. Most promising prospects were missed. Needed a system that never sleeps and catches every qualified signal.',
@@ -214,6 +214,139 @@ const PORTFOLIO_DATA = {
       'Monthly conversion tracking built-in'
     ],
     cta: 'Prospect discovery shouldn\'t be manual. Let an agent find your leads 24/7 while you sleep.'
+  },
+
+  'whatsapp-briefing': {
+    mission_id: 'MISSION_06',
+    code: 'WHATSAPP AI',
+    title: 'AI WhatsApp Business Briefing Assistant',
+    tagline: 'Daily WhatsApp briefings that aggregate key business metrics across platforms.',
+    tags: ['OpenClaw', 'WhatsApp Business', 'Data Aggregation', 'Daily Reports', 'Automation'],
+    chips: ['Daily Briefings', 'Zero Dashboard', 'Multi-platform'],
+    theme: 'red',
+    prev_mission: 'reddit-lead-gen',
+    next_mission: 'marketing-automation',
+
+    brief: 'An AI-powered assistant built using OpenClaw that aggregates key business metrics across multiple platforms and delivers a concise daily report directly to WhatsApp.',
+    problem: 'The client had to check multiple dashboards every morning to understand business performance. This takes hours, creates context gaps, and delays decision-making. No one had a single source of truth. ',
+    solution: [
+      'Aggregates sales, revenue, engagement, ad performance, and website traffic from multiple platforms',
+      'Builds a concise daily briefing optimized for WhatsApp',
+      'Delivers the briefing automatically at a custom time each morning',
+      'Removes the need for dashboard logins and manual monitoring',
+      'Offers an optional AI-filtered email inbox summary',
+      'Focuses on business insights, not raw data overload'
+    ],
+    tech_stack: {
+      'Agent Engine': 'OpenClaw · Intent extraction',
+      'Messaging': 'WhatsApp Business API · Scheduled delivery',
+      'Sources': 'Amazon Seller Central · Shopify · TikTok · Meta · Google Analytics · Email',
+      'Automation': 'Scheduled jobs · Webhooks · Data pipelines',
+      'Reporting': 'AI summarization · One-message brief format'
+    },
+    metrics: [
+      '1 Daily briefing delivered',
+      '6 Platforms aggregated',
+      '0 dashboard logins required',
+      'Hours of manual checking saved'
+    ],
+    outcomes: [
+      'Business owners receive one message with everything that matters',
+      'Decisions made faster with a single morning briefing',
+      'Manual dashboard checks eliminated',
+      'Critical metrics are surfaced before the workday begins',
+      'Optional email summary keeps owners informed without inbox noise'
+    ],
+    cta: 'Get your business metrics delivered to WhatsApp each morning, without logging into any dashboard.'
+  },
+
+  'marketing-automation': {
+    mission_id: 'MISSION_07',
+    code: 'MARKETING AI',
+    title: 'AI Marketing & Content Automation Suite',
+    tagline: 'Automates ad creation, campaign planning, and content production across Meta, Google, and more.',
+    tags: ['Ad Automation', 'Content Engine', 'Meta Ads', 'Google Ads', 'AI Workflows'],
+    chips: ['Ad Copy Generator', 'Campaign Planner', 'Content Repurposing'],
+    theme: 'red',
+    prev_mission: 'whatsapp-briefing',
+    next_mission: 'multi-agent-system',
+
+    brief: 'A multi-functional AI system designed to automate ad creation, campaign planning, content production, and performance analysis across platforms like Meta and Google.',
+    problem: 'Marketing teams were spending too much time creating ads, planning campaigns, producing content, and analyzing performance manually. This led to slow execution, inconsistent messaging, and missed growth windows.',
+    solution: [
+      'Generates high-converting ad copy and headlines for Meta and Google Ads',
+      'Plans full campaigns including audiences, budgets, and structure',
+      'Analyzes performance with weekly reports and actionable insights',
+      'Creates A/B test variations automatically',
+      'Generates podcast scripts, show notes, social captions, and SEO descriptions',
+      'Builds video and image prompts for Runway, HeyGen, and other creative tools',
+      'Repurposes one idea into multiple formats using an end-to-end workflow'
+    ],
+    tech_stack: {
+      'Ad Automation': 'OpenClaw · GPT-4 · Campaign builders',
+      'Content': 'Prompt engine · Script generation · SEO copy',
+      'Production': 'Video/image prompt generation · HeyGen workflows',
+      'Workflow': 'n8n · Scheduled automation · Publishing connectors',
+      'Reporting': 'Performance analysis · A/B insights'
+    },
+    metrics: [
+      '3× faster campaign creation',
+      'Multiple ad variations generated automatically',
+      'One idea converted into 5+ content formats',
+      'Weekly performance reports produced automatically'
+    ],
+    outcomes: [
+      'Ready-to-run ad creatives delivered instantly',
+      'Campaign plans generated without manual setup',
+      'Podcast, social, and video content created from one source idea',
+      'A/B testing variations produced automatically',
+      'Marketing workflows scaled with minimal manual effort'
+    ],
+    cta: 'Ready to automate your marketing and content stack from idea to execution? Let’s build the suite that does it all.'
+  },
+
+  'multi-agent-system': {
+    mission_id: 'MISSION_08',
+    code: 'AGENT SUITE',
+    title: 'AI Multi-Agent System for Digital Companies',
+    tagline: 'Scalable multi-agent AI system to automate operations, marketing, and content for digital businesses.',
+    tags: ['Multi-Agent AI', 'Salesforce', 'Slack', 'CRM Automation', 'Workflow Orchestration'],
+    chips: ['Sales Automation', 'Creative AI', 'Real-time Alerts'],
+    theme: 'red',
+    prev_mission: 'marketing-automation',
+    next_mission: null,
+
+    brief: 'A scalable multi-agent AI system built for digital businesses to automate operations, marketing, and content production across teams and platforms.',
+    problem: 'Digital companies had siloed tools, manual handoffs, and disconnected workflows. Sales, campaigns, and creative operations were fragmented and hard to scale.',
+    solution: [
+      'Sales Agent integrated with Salesforce for lead tracking and CRM automation',
+      'Campaign AI Agent manages Meta and Google ad campaigns',
+      'Creative AI Agent generates static and dynamic content',
+      'Content Repurposing Agent converts one asset across formats',
+      'Centralized workflow management with Notion and Slack integrations',
+      'Real-time team notifications and operational alerts'
+    ],
+    tech_stack: {
+      'CRM': 'Salesforce · Lead automation',
+      'Campaigns': 'Meta Ads · Google Ads connectors',
+      'Creative AI': 'Copy, image, and video generation',
+      'Workflow': 'Notion · Slack · Custom orchestration',
+      'Agents': 'Sales · Campaign · Creative · Repurposing'
+    },
+    metrics: [
+      'Automated campaign execution',
+      'Real-time team notification flow',
+      'Unified creative & operations workflow',
+      'Reduced manual workload across teams'
+    ],
+    outcomes: [
+      'Manual workload across operations and marketing reduced',
+      'Marketing operations scaled efficiently with AI agents',
+      'Creative output generated and repurposed automatically',
+      'Real-time alerts keep teams aligned',
+      'A unified AI-driven ecosystem manages workflows end-to-end'
+    ],
+    cta: 'Let’s build a multi-agent system that runs your digital business operations and marketing end-to-end.'
   }
 };
 
