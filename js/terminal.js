@@ -7,7 +7,7 @@ if (API_KEY === '__GEMINI_API_KEY__' && (window.location.hostname === '127.0.0.1
   if (API_KEY) sessionStorage.setItem('TEST_API_KEY', API_KEY);
 }
 
-const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
 
 const SYSTEM_PROMPT = `You are PANKAJ.AI, the autonomous interface for Pankaj Kumar, an AI Agent Architect.
 Your core directive is to assist visitors, explain Pankaj's capabilities, and QUALIFY/FETCH LEADS.
