@@ -5,36 +5,46 @@ const PANKAJ_DB = {
       id: 'MISSION_01',
       code: 'LEAD AI',
       name: 'Lead Qualification Engine',
+      tagline: 'Autonomous AI that qualifies inbound leads in real-time, sorting junk from gold.',
+      description: 'Built a real-time lead qualification system using OpenClaw agents and NLP scoring. Reduces manual review by 85%, increases conversion through smart routing.',
       chips: ['2× Conversion', '99.7% Uptime', '<1min Response'],
-      url: 'lead-qualification.html'
+      url: 'portfolio.html?portfolio=lead-qualification'
     },
     {
       id: 'MISSION_02',
       code: 'EMAIL AI',
       name: 'Email Automation Manager',
+      tagline: '85% autonomous email handling with 98.2% accuracy and 6 hours saved daily.',
+      description: 'Autonomous email agent powered by OpenClaw that reads, prioritizes, and drafts responses. Client approves with one click. Zero critical emails missed.',
       chips: ['85% Autonomous', '6hrs/day Freed', '98.2% Accuracy'],
-      url: 'email-automation.html'
+      url: 'portfolio.html?portfolio=email-automation'
     },
     {
       id: 'MISSION_03',
       code: 'CHIEF OF STAFF',
       name: 'AI Daily Briefing Agent',
+      tagline: 'Autonomous daily briefing that saves 45 minutes each morning and never misses a meeting.',
+      description: 'Reads calendar, email, Slack, and news feeds — delivers personalized briefing at 7am. Zero manual input required. Learns preferences over time.',
       chips: ['45min Saved Daily', '0 Missed Meetings', 'Zero Prompts'],
-      url: 'ai-chief-of-staff.html'
+      url: 'portfolio.html?portfolio=ai-chief-of-staff'
     },
     {
       id: 'MISSION_04',
       code: 'SAAS',
       name: 'Real Estate Operations SaaS',
+      tagline: 'Production-ready multi-tenant SaaS platform shipped with zero revisions and a 5★ Upwork review.',
+      description: 'Full-stack multi-tenant SaaS with role-based access, audit logs, Kanban boards, automated notifications, and daily exports. Delivered on time, zero revisions.',
       chips: ['Zero Revisions', 'Multi-tenant', '5★ Review'],
-      url: 'real-estate-saas.html'
+      url: 'portfolio.html?portfolio=real-estate-saas'
     },
     {
       id: 'MISSION_05',
       code: 'REDDIT BOT',
       name: 'Lead Gen → Discord Pipeline',
+      tagline: '24/7 Reddit monitoring bot that identifies intent signals and delivers qualified leads to Discord.',
+      description: 'Autonomous system monitoring 50+ subreddits, identifies buying intent signals, routes qualified prospects to Discord instantly. Delivers 8-12 qualified leads daily.',
       chips: ['24/7 Monitor', 'Intent Signals', 'n8n + AI'],
-      url: 'reddit-lead-gen.html'
+      url: 'portfolio.html?portfolio=reddit-lead-gen'
     }
   ],
   reviews: [
@@ -67,6 +77,8 @@ function renderMissionLog() {
     <a href="${p.url}" class="log">
       <div class="log-id">${p.id} · ${p.code}</div>
       <div class="log-name">${p.name}</div>
+      <div class="log-tagline">${p.tagline}</div>
+      <div class="log-description">${p.description}</div>
       <div class="log-chips">
         ${p.chips.map(c => `<span class="lchip">${c}</span>`).join('')}
       </div>

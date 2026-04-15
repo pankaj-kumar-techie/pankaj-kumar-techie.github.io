@@ -579,7 +579,15 @@ body::after {
   font-size: 16px; font-weight: 700; letter-spacing: 0.04em;
   color: var(--cyan); line-height: 1;
 }
-.log-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.log-tagline {
+  font-size: 11px; letter-spacing: 0.08em; color: var(--dim);
+  font-style: italic; line-height: 1.4; margin-top: 4px;
+}
+.log-description {
+  font-size: 12px; color: rgba(0, 255, 200, 0.6); line-height: 1.5;
+  margin-top: 6px; font-family: 'Exo 2', sans-serif; font-weight: 300;
+}
+.log-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
 .lchip {
   font-size: 10px; letter-spacing: 0.05em;
   color: var(--amber);
