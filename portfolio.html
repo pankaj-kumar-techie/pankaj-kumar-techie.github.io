@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0"/>
+<title>Portfolio — PANKAJ.AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
+<link rel="stylesheet" href="css/core.css">
+<link rel="stylesheet" href="css/case-study.css">
+<style>
+  /* Dynamic loader styles */
+  #portfolio-content {
+    min-height: 100vh;
+    padding: 20px 0;
+  }
+  
+  .loader {
+    text-align: center;
+    padding: 40px;
+    color: var(--primary);
+    font-family: 'Share Tech Mono', monospace;
+  }
+  
+  .error-msg {
+    color: #ff3355;
+    text-align: center;
+    padding: 40px;
+    font-family: 'Share Tech Mono', monospace;
+    border: 1px solid #ff3355;
+    margin: 20px;
+  }
+</style>
+</head>
+<body id="portfolio-body">
+<div id="cur"></div><div id="cur-trail"></div>
+<div class="hc hc-tl"></div><div class="hc hc-tr"></div><div class="hc hc-bl"></div><div class="hc hc-br"></div>
+<canvas id="neural"></canvas>
+<div id="statusbar">
+  <div class="sb-left">
+    <a href="index.html" class="sb-logo">PANKAJ.AI</a>
+    <span class="sb-sep">|</span>
+    <div class="sb-status"><span class="online-dot"></span>AGENT ONLINE</div>
+  </div>
+  <div class="sb-right">
+    <span id="live-clock">--:--:--</span>
+    <span class="sb-sep">|</span>
+    <a href="index.html#contact" class="sb-hire">HIRE ME</a>
+  </div>
+</div>
+
+<div class="mq">
+  <div class="mq-inner">
+    <span>OpenClaw Agents</span><span>RAG Pipelines</span><span>n8n Automation</span><span>WhatsApp AI</span><span>FastAPI</span><span>100% Job Success</span>
+    <span>OpenClaw Agents</span><span>RAG Pipelines</span><span>n8n Automation</span><span>WhatsApp AI</span><span>FastAPI</span><span>100% Job Success</span>
+  </div>
+</div>
+
+<!-- Dynamic content will be loaded here -->
+<div id="portfolio-content">
+  <div class="loader">↳ LOADING MISSION DATA...</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="js/portfolios-data.js"></script>
+<script src="js/portfolio-loader.js"></script>
+<script src="js/core.js"></script>
+</body>
+</html>

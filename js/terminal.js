@@ -1,13 +1,10 @@
 /* ─── PANKAJ.AI GEMINI TERMINAL ENGINE ─── */
 let API_KEY = '__GEMINI_API_KEY__'; // Replaced via GitHub Actions during deployment
 
-// Safely ask for the key in local environments without hardcoding it in source control
-if (API_KEY === '__GEMINI_API_KEY__' && (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost' || window.location.protocol === 'file:')) {
-  API_KEY = sessionStorage.getItem('TEST_API_KEY') || prompt("DEV MODE: Enter your new Gemini API Key for local testing (it won't be saved to Git):");
-  if (API_KEY) sessionStorage.setItem('TEST_API_KEY', API_KEY);
-}
+// API key is handled during deployment
+// No local dev prompt to keep terminal clean
 
-const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
 
 const SYSTEM_PROMPT = `You are PANKAJ.AI, the autonomous interface for Pankaj Kumar, an AI Agent Architect.
 Your core directive is to assist visitors, explain Pankaj's capabilities, and QUALIFY/FETCH LEADS.
