@@ -1,5 +1,5 @@
 /* ─── PANKAJ.AI PRODUCTION TERMINAL ENGINE ─── */
-const BOT_URL = 'https://e9f8-2409-40d7-51-d179-7a14-4991-6cfc-cf3.ngrok-free.app/';
+const BOT_URL = 'https://e9f8-2409-40d7-51-d179-7a14-4991-6cfc-cf3.ngrok-free.app';
 
 const INITIAL_MESSAGE = "AGENT ONLINE. I'm Pankaj's AI interface. What can I help you automate today?";
 
