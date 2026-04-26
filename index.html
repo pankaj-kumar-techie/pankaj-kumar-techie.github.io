@@ -161,19 +161,25 @@
   <!-- TERMINAL BOT CHAT -->
   <div id="terminal">
     <div class="term-header">
-      <div class="term-dot" style="background:#ff5f57"></div>
-      <div class="term-dot" style="background:#febc2e"></div>
-      <div class="term-dot" style="background:#28c840"></div>
-      <span class="term-title">pankaj_ai.agent — interactive terminal</span>
+      <div class="term-dots">
+        <div class="term-dot" style="background:#ff5f57"></div>
+        <div class="term-dot" style="background:#febc2e"></div>
+        <div class="term-dot" style="background:#28c840"></div>
+      </div>
+      <span class="term-title">pankaj_ai.agent — AI_ANALYST_V4</span>
+      <div class="term-status-indicator">
+        <span class="status-label">CORE:</span>
+        <span class="status-value">CONNECTED</span>
+      </div>
     </div>
     <div class="term-body" id="term-body">
       <!-- messages injected by JS -->
     </div>
     <div class="term-input-row">
       <span class="term-prompt">&gt;_</span>
-      <input class="term-input" id="term-input" type="text" placeholder="Ask me anything about AI agents..."
+      <input class="term-input" id="term-input" type="text" placeholder="Initializing AI Analyst..."
         autocomplete="off" spellcheck="false" />
-      <button class="term-send" onclick="sendMessage()">SEND</button>
+      <button class="term-send" id="term-send">SEND</button>
     </div>
   </div>
 
