@@ -1,26 +1,10 @@
-/* ─── PANKAJ.AI AGENTIC TERMINAL (INTELLIGENCE ENGINE) ─── */
-const BOT_URL = 'https://023c-2409-40d7-51-d179-7a14-4991-6cfc-cf3.ngrok-free.app';
+/* ─── PANKAJ.AI – TERMINAL BOT (OPTIMIZED) ─── */
 
-const isReturning = localStorage.getItem('pankaj_returning');
-const GREETING = isReturning ? "Welcome back. System ready for mission analysis." : "Welcome. I am Pankaj's AI Solution Architect.";
-if (!isReturning) localStorage.setItem('pankaj_returning', 'true');
+const WORKER_URL = 'http://localhost:8787'; // Local dev port
+const BOT_NAME = 'Pankaj AI Assistant';
+const BOT_AVATAR = '🤖';
 
-const INITIAL_MESSAGE = "I build AI agents that handle your repetitive tasks so you can focus on high-impact work. What process would you like to automate today?";
-
-const LOCAL_RESPONSES = {
-  'hi': 'Hello! Are you looking to build an AI agent or automate a workflow?',
-  'hello': 'Greetings. Tell me about your workflow, and I\'ll suggest an AI solution.',
-  'who are you': 'I am Pankaj AI, a specialized assistant. I help teams reclaim 15+ hours/week through smart automation.',
-  'contact': 'START_INTAKE',
-  'hire': 'START_INTAKE'
-};
-
-const INTAKE_STEPS = [
-  "Excellent. Let's draft a solution. What is your Full Name?",
-  "Thanks! What is your Work Email?",
-  "And finally, describe the Task or Process you want to boost with AI."
-];
-
+// ================= STATE =================
 let intakeActive = false;
 let currentStep = 0;
 let leadData = { name: '', email: '', problem: '' };
@@ -30,24 +14,31 @@ let hasBooted = false;
 let visitorId = localStorage.getItem('pankaj_visitor_id') || 'V-' + Math.random().toString(36).substr(2, 9);
 localStorage.setItem('pankaj_visitor_id', visitorId);
 
+// ================= DOM ELEMENTS =================
 const termBody = document.getElementById('term-body');
 const termInput = document.getElementById('term-input');
 
-function addMsg(role, text) {
+// ================= UTILITIES =================
+function addMsg(role, text, isHtml = false) {
   const msg = document.createElement('div');
   msg.className = `msg ${role}`;
+
   const icon = document.createElement('div');
   icon.className = role === 'bot' ? 'msg-bot-icon' : (role === 'sys' ? 'msg-bot-icon sys' : 'msg-user-icon');
-  icon.textContent = role === 'bot' ? 'PK' : (role === 'sys' ? '!!' : 'US');
+  icon.textContent = role === 'bot' ? BOT_AVATAR : (role === 'sys' ? '⚠️' : '👤');
+
   const content = document.createElement('div');
   content.className = 'msg-text';
-  content.innerHTML = text;
+  if (isHtml) content.innerHTML = text;
+  else content.textContent = text;
+
   msg.appendChild(icon);
   msg.appendChild(content);
   termBody.appendChild(msg);
 
+  // Keep terminal scroll manageable
   const allMsgs = termBody.querySelectorAll('.msg');
-  if (allMsgs.length > 40) allMsgs[0].remove();
+  if (allMsgs.length > 50) allMsgs[0].remove();
 
   setTimeout(() => {
     msg.classList.add('show');
@@ -59,9 +50,9 @@ function showTyping() {
   const loader = document.createElement('div');
   loader.className = 'typing-indicator';
   loader.id = 'term-loader';
-  loader.innerHTML = '<span></span><span></span><span></span><small style="margin-left:8px; font-size:8px; opacity:0.6">CONSULTING CORE...</small>';
+  loader.innerHTML = `<span></span><span></span><span></span><small style="margin-left:8px; font-size:8px; opacity:0.6">${BOT_NAME} is thinking...</small>`;
   termBody.appendChild(loader);
-  termBody.scrollTo({ top: termBody.scrollHeight, behavior: 'smooth' });
+  termBody.scrollTop = termBody.scrollHeight;
 }
 
 function hideTyping() {
@@ -69,175 +60,191 @@ function hideTyping() {
   if (loader) loader.remove();
 }
 
-async function captureVisit() {
+// ================= BACKEND CALLS =================
+async function sendMessageToWorker(message, history) {
+  const response = await fetch(`${WORKER_URL}/api/chat`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message, history, visitorId })
+  });
+  if (!response.ok) throw new Error(`HTTP ${response.status}`);
+  const data = await response.json();
+  return data.response;
+}
+
+async function sendLeadToWorker(lead) {
+  const response = await fetch(`${WORKER_URL}/webhook/lead`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      clientName: lead.name,
+      email: lead.email,
+      description: lead.problem,
+      visitorId,
+      source: 'Terminal Intake'
+    })
+  });
+  if (!response.ok) throw new Error(`HTTP ${response.status}`);
+}
+
+async function logVisit() {
   try {
-    const geoRes = await fetch('https://ipapi.co/json/');
-    const geo = await geoRes.json();
-    const meta = {
-      visitorId, timestamp: new Date().toISOString(), url: window.location.href,
-      ip: geo.ip, city: geo.city, country: geo.country_name, org: geo.org,
-      device: { platform: navigator.platform, agent: navigator.userAgent }
-    };
-    await fetch(`${BOT_URL}/webhook/visit`, {
+    await fetch(`${WORKER_URL}/webhook/visit`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(meta)
+      body: JSON.stringify({ visitorId, url: window.location.href })
     });
-  } catch (e) {
-    const basicMeta = { visitorId, url: window.location.href, agent: navigator.userAgent, timestamp: new Date().toISOString() };
-    fetch(`${BOT_URL}/webhook/visit`, { method: 'POST', body: JSON.stringify(basicMeta) });
-  }
+  } catch (e) { /* silent */ }
 }
 
-async function analyzeLead(message) {
-  try { fetch(`${BOT_URL}/webhook/analyze`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ visitorId, message, history: chatHistory, source: 'Terminal Architect' }) }); } catch (e) { }
-}
+// ================= LEAD INTAKE FLOW =================
+const INTAKE_STEPS = [
+  "Let's get started. What is your full name?",
+  "Thanks! And your email address?",
+  "Finally, in one sentence: what business process would you like to automate or improve with AI?"
+];
 
-async function handleIntake(val) {
+async function handleIntake(userInput) {
   if (currentStep === 0) {
-    leadData.name = val;
+    leadData.name = userInput;
     currentStep++;
     addMsg('bot', INTAKE_STEPS[1]);
   } else if (currentStep === 1) {
-    leadData.email = val;
+    if (!userInput.includes('@') || !userInput.includes('.')) {
+      addMsg('bot', "Please enter a valid email address:");
+      return;
+    }
+    leadData.email = userInput;
     currentStep++;
     addMsg('bot', INTAKE_STEPS[2]);
   } else if (currentStep === 2) {
-    leadData.problem = val;
-    addMsg('bot', "ANALYZING WORKFLOW... GENERATING SOLUTION ARCHITECTURE.");
-    await fetch(`${BOT_URL}/webhook/lead`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        source: 'Mission-Critical Lead',
-        visitorId,
-        clientName: leadData.name,
-        description: `Project Brief: ${leadData.problem}\nDirect Contact: ${leadData.email}`,
-        url: window.location.href
-      })
-    });
-    addMsg('bot', "✅ MISSION LOGGED. I have transmitted your brief directly to Pankaj's secure Discord channel. Expect a response at " + leadData.email + " within 4 hours.");
-
-    intakeActive = false;
-    currentStep = 0;
+    leadData.problem = userInput;
+    addMsg('bot', "✨ Analyzing your requirements...");
+    showTyping();
+    try {
+      await sendLeadToWorker(leadData);
+      hideTyping();
+      addMsg('bot', `✅ **Lead captured successfully!** Pankaj will personally review your request and reply to **${leadData.email}** within 4 hours. Thank you!`, true);
+      intakeActive = false;
+      currentStep = 0;
+      leadData = { name: '', email: '', problem: '' };
+    } catch (err) {
+      hideTyping();
+      addMsg('sys', '⚠️ Submission error. Please email pankajkumar.techie@gmail.com directly.', true);
+      intakeActive = false;
+    }
   }
 }
 
-const MISSION_DATA = "My mission is to build the autonomous future. I design AI systems that don't just 'assist'—they take over entire workflows, allowing human teams to focus on 100% creative growth.";
-const SOTA_DATA = "Current Stack: [YOLOv10] for Vision, [GPT-4o/Claude-3.5] for Logic, [Pinecone/Weaviate] for Memory, and [TensorRT] for Inference Speed.";
-
+// ================= MESSAGE HANDLER =================
 async function sendMessage() {
-  const val = termInput.value.trim();
-  if (!val || isProcessing) return;
+  const rawMessage = termInput.value.trim();
+  if (!rawMessage || isProcessing) return;
   termInput.value = '';
-  addMsg('user', val);
-  analyzeLead(val);
+  addMsg('user', rawMessage);
 
   if (intakeActive) {
-    handleIntake(val);
+    await handleIntake(rawMessage);
     return;
   }
 
-  const lowVal = val.toLowerCase();
-  if (lowVal === 'mission') { addMsg('bot', MISSION_DATA); return; }
-  if (lowVal === 'sota') { addMsg('bot', SOTA_DATA); return; }
-
-  if (LOCAL_RESPONSES[lowVal]) {
-    if (LOCAL_RESPONSES[lowVal] === 'START_INTAKE') {
-      intakeActive = true;
-      currentStep = 0;
-      addMsg('bot', INTAKE_STEPS[0]);
-    } else {
-      addMsg('bot', LOCAL_RESPONSES[lowVal]);
-    }
+  const lowerMsg = rawMessage.toLowerCase();
+  if (lowerMsg === 'clear') { termBody.innerHTML = ''; return; }
+  if (lowerMsg === 'help') {
+    addMsg('bot', `**Available commands:** help, contact, mission, clear`, true);
+    return;
+  }
+  if (lowerMsg === 'mission') {
+    addMsg('bot', "My mission is to help businesses reclaim 15+ hours/week through autonomous AI agents. I'm here to understand your needs and connect you with Pankaj.");
     return;
   }
 
-  if (val.includes('@')) {
+  if (lowerMsg === 'contact' || lowerMsg === 'hire') {
+    intakeActive = true;
+    currentStep = 0;
+    addMsg('bot', INTAKE_STEPS[0]);
+    return;
+  }
+
+  if (rawMessage.includes('@') && rawMessage.includes('.')) {
     intakeActive = true;
     currentStep = 1;
-    leadData.email = val;
-    addMsg('bot', "Email detected. I'm starting your solution brief. What is your Full Name?");
+    leadData.email = rawMessage;
+    addMsg('bot', "Email detected. Let's continue. What is your full name?");
     return;
   }
 
   isProcessing = true;
-  termInput.placeholder = "CONSULTING ARCHITECT CORE...";
+  termInput.placeholder = "Consulting AI...";
   showTyping();
 
   try {
-    const response = await fetch(`${BOT_URL}/api/chat`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: val, history: chatHistory, visitorId })
-    });
-    const data = await response.json();
+    const aiResponse = await sendMessageToWorker(rawMessage, chatHistory);
     hideTyping();
-
-    if (data.response) {
-      addMsg('bot', data.response.replace(/\*\*/g, ''));
-      chatHistory.push({ role: "user", parts: [{ text: val }] });
-      chatHistory.push({ role: "model", parts: [{ text: data.response }] });
-    }
-  } catch (e) {
+    addMsg('bot', aiResponse, true); // Enabled HTML
+    chatHistory.push({ role: "user", parts: [{ text: rawMessage }] });
+    chatHistory.push({ role: "model", parts: [{ text: aiResponse }] });
+    if (chatHistory.length > 20) chatHistory = chatHistory.slice(-20);
+  } catch (err) {
     hideTyping();
-    addMsg('sys', 'OFFLINE: Unable to reach core. MISSION CRITICAL: Please connect via alternate channels:');
-    addMsg('bot', `
-      <div class="fallback-links">
-        <a href="mailto:pankajkumar.techie@gmail.com" class="fb-link">Email Pankaj</a>
-      </div>
-    `);
+    addMsg('sys', '⚠️ Service Interrupted. Please <a href="mailto:pankajkumar.techie@gmail.com" style="color:#00ff00;">Email Pankaj Directly</a>.', true);
   } finally {
     isProcessing = false;
-    termInput.placeholder = "Ask me about your workflow...";
+    termInput.placeholder = "Ask about AI automation...";
   }
 }
 
+// ================= BOOT SEQUENCE =================
 async function boot() {
   if (hasBooted) return;
   hasBooted = true;
 
-  let geo = { city: 'UNKNOWN', country_code: '...', ip: '...', org: '...' };
-  try {
-    const res = await fetch('https://ipapi.co/json/');
-    geo = await res.json();
-  } catch (e) { }
-
-  const BOOT_LOGS = [
-    { t: "INITIALIZING NEURAL_CORE...", d: 400 },
-    { t: "--- VISITOR SYSTEM AUDIT ---", d: 200 },
-    { t: "▸ TARGET_IP: " + (geo.ip || '...'), d: 200 },
-    { t: "▸ LOC_IDENT: " + (geo.city || 'VISITOR').toUpperCase() + ", " + (geo.country_code || '??'), d: 200 },
-    { t: "▸ NETWORK: " + (geo.org || 'UNKNOWN').split(' ')[0].toUpperCase(), d: 200 },
-    { t: "▸ SYS_OS: " + (navigator.platform || 'UNKNOWN').split(' ')[0].toUpperCase(), d: 200 },
-    { t: "--- AUDIT COMPLETE ---", d: 300 },
-    { t: GREETING, d: 800 }
+  const bootLines = [
+    { t: `🔄 Initializing ${BOT_NAME}...`, d: 300 },
+    { t: `👤 Visitor ID: ${visitorId}`, d: 200 },
+    { t: `✅ System online. I'm an AI assistant that helps qualify projects for Pankaj.`, d: 500 },
+    { t: `💡 Tip: Type \`help\` for commands, or \`contact\` to start the intake form.`, d: 600, html: true },
+    { t: "How can I help you today?", d: 400 }
   ];
 
-  for (const item of BOOT_LOGS) {
-    addMsg('bot', item.t);
-    await new Promise(r => setTimeout(r, item.d));
+  for (const line of bootLines) {
+    addMsg('bot', line.t, line.html);
+    await new Promise(r => setTimeout(r, line.d));
   }
 
-  setTimeout(() => {
-    addMsg('bot', INITIAL_MESSAGE);
-    captureVisit();
-    termInput.placeholder = "Describe a process to automate...";
-  }, 400);
+  if (!sessionStorage.getItem('pankaj_visit_logged')) {
+    logVisit();
+    sessionStorage.setItem('pankaj_visit_logged', 'true');
+  }
+  termInput.disabled = false;
+  termInput.focus();
 }
 
 const termObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      setTimeout(boot, 500);
+    if (entry.isIntersecting && !hasBooted) {
+      setTimeout(boot, 300);
       termObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.5 });
+}, { threshold: 0.3 });
 
-const termEl = document.getElementById('terminal');
-if (termEl) termObserver.observe(termEl);
+const terminalElement = document.getElementById('terminal');
+if (terminalElement) termObserver.observe(terminalElement);
 
-termInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
-const termSend = document.getElementById('term-send');
-if (termSend) { termSend.addEventListener('click', sendMessage); }
+// ================= EVENT LISTENERS =================
+termInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter' && !isProcessing) sendMessage();
+});
+const sendBtn = document.getElementById('term-send');
+if (sendBtn) sendBtn.addEventListener('click', sendMessage);
+
+let startTime = Date.now();
+function sendSessionEnd() {
+  const duration = Math.floor((Date.now() - startTime) / 1000);
+  if (duration > 5) {
+    navigator.sendBeacon(`${WORKER_URL}/webhook/session_end`, JSON.stringify({ visitorId, duration }));
+  }
+}
+window.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') sendSessionEnd(); });
+window.addEventListener('pagehide', sendSessionEnd);
