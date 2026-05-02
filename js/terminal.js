@@ -1,6 +1,6 @@
 /* ─── PANKAJ.AI – TERMINAL BOT (OPTIMIZED) ─── */
 
-const WORKER_URL = 'http://localhost:8787'; // Local dev port
+const WORKER_URL = 'https://pankaj-portfolio-worker.pankajkumar-techie.workers.dev';
 const BOT_NAME = 'Pankaj AI Assistant';
 const BOT_AVATAR = '🤖';
 
