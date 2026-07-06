@@ -84,7 +84,7 @@
       const countEl = document.getElementById('mission-count');
       if (grid && typeof PANKAJ_DB !== 'undefined') {
         countEl.textContent = PANKAJ_DB.projects.length;
-        grid.innerHTML = PANKAJ_DB.projects.map(p => `
+        grid.innerHTML = [...PANKAJ_DB.projects].reverse().map(p => `
           <a href="${p.url}" class="arch-card">
             <div class="arch-id">
               <span>${p.id}</span>

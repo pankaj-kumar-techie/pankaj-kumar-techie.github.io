@@ -72,6 +72,42 @@ const PANKAJ_DB = {
       description: 'A unified multi-agent platform that automates sales, campaigns, creative delivery, and team workflows across Salesforce, Slack, and internal tools.',
       chips: ['Sales Automation', 'Creative AI', 'Real-time Alerts'],
       url: 'portfolio.html?portfolio=multi-agent-system'
+    },
+    {
+      id: 'MISSION_09',
+      code: 'PAHARI YATRI',
+      name: 'Pahari Yatri Digital Travel Library',
+      tagline: 'Theme-aware Next.js digital archive and interactive travel guide for Himalayan history and culture.',
+      description: 'Built a content-focused Next.js digital travel library for Himalayan history and guides. Includes responsive custom typography, viewport-safe navigation overlays, and theme-aware layouts.',
+      chips: ['Next.js 14', 'Theme-Aware', 'Responsive Navigation', '100% SEO'],
+      url: 'portfolio.html?portfolio=pahari-yatri'
+    },
+    {
+      id: 'MISSION_10',
+      code: 'LOGISTICS PLATFORM',
+      name: 'Yayo Freight & Cargo Logistics Platform',
+      tagline: 'Production-ready freight transaction engine and buyer-shipper portal for low-connectivity environments.',
+      description: 'A multi-role platform orchestrating logistics between buyers, dealers, shippers, and admins. Engineered with PWA support and offline capabilities for low-network environments.',
+      chips: ['Freight Engine', 'Role-Based Access', 'PWA / Offline', 'Escrow Transactions'],
+      url: 'portfolio.html?portfolio=yayo-logistics'
+    },
+    {
+      id: 'MISSION_11',
+      code: 'AUDIT FLOW',
+      name: 'AuditFlow AI Website Audit Engine',
+      tagline: 'Automated ranking analysis, PageSpeed audit, and business revenue loss projections.',
+      description: 'Aggregates PageSpeed Insights, Lighthouse scores, and DataForSEO keyword analytics. Automatically generates high-conversion, client-facing 6-page PDF audits with business revenue calculations.',
+      chips: ['SEO Aggregator', 'Lighthouse API', 'Revenue Projection', 'PDF Auto-Gen'],
+      url: 'portfolio.html?portfolio=auditflow-ai'
+    },
+    {
+      id: 'MISSION_12',
+      code: 'CHROME EXTENSION',
+      name: 'Upwork Matcher & AI Proposal Agent',
+      tagline: 'Real-time job brief analysis, profile matching, and custom cover letter draft generator.',
+      description: 'A Manifest V3 browser extension that scans freelance job listings, matches skills, scores listings, and generates personalized proposals using GPT-4 API.',
+      chips: ['Chrome Extension', 'AI Cover Letters', 'Text Scraping', 'GPT-4 API'],
+      url: 'portfolio.html?portfolio=upwork-matcher'
     }
   ],
   reviews: [
@@ -97,13 +133,14 @@ const PANKAJ_DB = {
 };
 
 // ─── DYNAMIC RENDERER ───
-const HOME_FEATURED_PROJECTS = 3;
+const HOME_FEATURED_PROJECTS = 6;
 
 function renderMissionLog() {
   const container = document.getElementById('mission-log-container');
   if (!container) return;
 
-  const featuredProjects = PANKAJ_DB.projects.slice(0, HOME_FEATURED_PROJECTS);
+  // Show the newest projects first on the homepage
+  const featuredProjects = [...PANKAJ_DB.projects].reverse().slice(0, HOME_FEATURED_PROJECTS);
 
   container.innerHTML = featuredProjects.map(p => `
     <a href="${p.url}" class="log">

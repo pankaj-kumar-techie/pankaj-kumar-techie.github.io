@@ -314,7 +314,7 @@ const PORTFOLIO_DATA = {
     chips: ['Sales Automation', 'Creative AI', 'Real-time Alerts'],
     theme: 'red',
     prev_mission: 'marketing-automation',
-    next_mission: null,
+    next_mission: 'pahari-yatri',
 
     brief: 'A scalable multi-agent AI system built for digital businesses to automate operations, marketing, and content production across teams and platforms.',
     problem: 'Digital companies had siloed tools, manual handoffs, and disconnected workflows. Sales, campaigns, and creative operations were fragmented and hard to scale.',
@@ -347,6 +347,166 @@ const PORTFOLIO_DATA = {
       'A unified AI-driven ecosystem manages workflows end-to-end'
     ],
     cta: 'Let’s build a multi-agent system that runs your digital business operations and marketing end-to-end.'
+  },
+
+  'pahari-yatri': {
+    mission_id: 'MISSION_09',
+    code: 'PAHARI YATRI',
+    title: 'Pahari Yatri Digital Travel Library',
+    tagline: 'Theme-aware Next.js digital archive and interactive travel guide for Himalayan history and culture.',
+    tags: ['Next.js 14', 'TypeScript', 'Tailwind CSS', 'SSG Optimization', 'Editorial Layouts'],
+    chips: ['100 SEO Score', 'Theme-Aware', 'Responsive Navigation', 'Himalayan History'],
+    theme: 'green',
+    prev_mission: 'multi-agent-system',
+    next_mission: 'yayo-logistics',
+
+    brief: 'Built a content-rich Next.js digital travel and history library for Himalayan explorers. Designed with an editorial aesthetic, custom semantic variables, theme-aware responsive typography, and mobile-optimised layouts.',
+    problem: 'Travel logs and historical Himalayan documents were scattered across unformatted web pages, making navigation difficult and ruining the reading experience on mobile devices.',
+    solution: [
+      'Designed a content-focused Next.js application with a clean, book-like reading interface',
+      'Created theme-aware global layouts ensuring readability in dark and light modes',
+      'Implemented an optimized mobile navigation overlay resolving viewport clipping issues',
+      'Built high-performance localized static page generation (SSG) for fast loading times'
+    ],
+    tech_stack: {
+      'Frontend': 'Next.js 14 · TypeScript · Tailwind CSS',
+      'Aesthetics': 'Custom Serif Typography · Minimalist Grids',
+      'Performance': 'Static Page Generation (SSG) · Image Optimization',
+      'Deployment': 'Vercel · Cloudflare Edge'
+    },
+    metrics: [
+      '100% SEO & Accessibility score',
+      '95+ Mobile performance score',
+      '< 0.5s Page transition latency',
+      '2 Layout themes (Light/Dark)'
+    ],
+    outcomes: [
+      'Delivered a premium digital library interface that reads like a high-end travel magazine',
+      'Solved mobile viewport navigation issues and standard styling leaks',
+      'Implemented robust indexing for hundreds of historical destinations',
+      'Highly engaging user experience with subtle animations and location maps'
+    ],
+    cta: 'Want a content-rich, beautiful, speed-optimised digital library or publishing platform? Let\'s design it.'
+  },
+
+  'yayo-logistics': {
+    mission_id: 'MISSION_10',
+    code: 'LOGISTICS PLATFORM',
+    title: 'Yayo Freight & Cargo Logistics Platform',
+    tagline: 'Production-ready freight transaction engine and buyer-shipper portal for low-connectivity environments.',
+    tags: ['Freight Engine', 'Role-Based Access', 'PWA / Offline Support', 'Escrow Transactions'],
+    chips: ['Freight Engine', 'Role-Based Access', 'PWA / Offline Support', 'Escrow Transactions'],
+    theme: 'blue',
+    prev_mission: 'pahari-yatri',
+    next_mission: 'auditflow-ai',
+
+    brief: 'Developed Yayo, a robust, production-ready platform that orchestrates operations between Buyers, Dealers, Shippers, and Admins. Features secure transaction verification and role-based logistics tools tailored for low-connectivity mobile environments.',
+    problem: 'Freight operations in remote areas suffered from disconnected interfaces, high latency, insecure transaction handling, and lack of clarity on carrier status, leading to cargo delays.',
+    solution: [
+      'Built a multi-tenant, role-based freight dashboard with clear security checks',
+      'Designed a lightweight, service-worker powered progressive web app (PWA) that loads on slow mobile networks',
+      'Implemented an escrow-style transaction verification pipeline for buyers and dealers',
+      'Developed real-time status reporting and cargo mapping tools'
+    ],
+    tech_stack: {
+      'Frontend': 'React · Next.js · Tailwind CSS',
+      'Backend': 'FastAPI · WebSockets · Celery worker',
+      'Database': 'PostgreSQL · Redis transaction cache',
+      'Logistics': 'Leaflet Maps · GeoJSON geofencing'
+    },
+    metrics: [
+      '4 Roles managed',
+      '100% Secure transaction verification',
+      '< 1.2s Dashboard load time on 3G',
+      '0 Data loss during offline sync'
+    ],
+    outcomes: [
+      'Coordinated buyer, dealer, shipper, and admin workflows in a single, trust-hardened application',
+      'Slashed coordination overhead and shipment delays by 40%',
+      'Reduced mobile data usage by 65% through aggressive client-side caching',
+      'Achieved a fully functional PWA with offline cargo tracking capabilities'
+    ],
+    cta: 'Need a robust logistics platform, dashboard, or transaction engine? Let\'s engineer it.'
+  },
+
+  'auditflow-ai': {
+    mission_id: 'MISSION_11',
+    code: 'AUDIT FLOW',
+    title: 'AuditFlow AI Website Audit Engine',
+    tagline: 'Automated ranking analysis, PageSpeed audit, and business revenue loss projections.',
+    tags: ['SEO Intelligence', 'Lighthouse API', 'Revenue Projection', 'PDF Auto-Gen'],
+    chips: ['SEO Aggregator', 'Lighthouse API', 'Revenue Projection', 'PDF Auto-Gen'],
+    theme: 'amber',
+    prev_mission: 'yayo-logistics',
+    next_mission: 'upwork-matcher',
+
+    brief: 'Built a backend audit aggregator and frontend report generator that analyzes website rankings, maps page-speed scores, finds competitor keyword gaps, and translates technical issues into business revenue loss statistics.',
+    problem: 'Agencies struggled to sell SEO services because standard reports were too technical. Sales reps spent hours manually copy-pasting site metrics into PDFs, converting only 5% of prospects.',
+    solution: [
+      'Integrated DataForSEO API to fetch live keyword rankings and search volumes',
+      'Connected Google PageSpeed Insights API to pull performance, accessibility, and SEO grades',
+      'Created an algorithmic calculator that estimates potential revenue loss based on ranking gaps',
+      'Designed a clean, modern dashboard and automated 6-page PDF report compiler'
+    ],
+    tech_stack: {
+      'Engine': 'Node.js · Express · DataForSEO API',
+      'Performance': 'Google PageSpeed API · Chrome Lighthouse',
+      'PDF Generator': 'Puppeteer · PDF-lib · HTML-to-PDF compiler',
+      'Frontend': 'React · Tailwind CSS · Chart.js'
+    },
+    metrics: [
+      '3× Prospect conversion rate',
+      '< 90s Report generation time',
+      '$0 Manual drafting cost',
+      '100% Competitor tracking'
+    ],
+    outcomes: [
+      'Reclaimed 30+ hours/week for agency sales teams',
+      'Delivered instant, client-facing PDF audits demonstrating immediate business value',
+      'Boosted client sales conversions by speaking in terms of revenue, not just backlinks',
+      'Designed a responsive React interface displaying live speed and ranking metrics'
+    ],
+    cta: 'Want to automate audits or compile beautiful, data-driven reports for your sales team? Let\'s build it.'
+  },
+
+  'upwork-matcher': {
+    mission_id: 'MISSION_12',
+    code: 'CHROME EXTENSION',
+    title: 'Upwork Matcher & AI Proposal Agent',
+    tagline: 'Real-time job brief analysis, profile matching, and custom cover letter draft generator.',
+    tags: ['Chrome Extension', 'AI Cover Letters', 'Text Scraping', 'GPT-4 API'],
+    chips: ['Chrome Extension', 'AI Cover Letters', 'Text Scraping', 'GPT-4 API'],
+    theme: 'green',
+    prev_mission: 'auditflow-ai',
+    next_mission: null,
+
+    brief: 'Built a browser extension that uses AI to analyze client briefs, matches skills in real-time, drafts custom cover letters, and scores job openings to optimize the bidding process.',
+    problem: 'Freelancers spend hours searching through job feeds and writing personalized proposals. By the time they draft a quality cover letter, 50+ other bids have already been submitted, lowering success rates.',
+    solution: [
+      'Developed a lightweight manifest V3 browser extension that scans active tab DOM',
+      'Integrated GPT-4 to parse requirements, check skill gaps, and score job listings',
+      'Created an interactive overlay inside the browser tab to preview and copy tailored proposals',
+      'Implemented localized profile storage (skills, case studies, past projects)'
+    ],
+    tech_stack: {
+      'Extension': 'JavaScript · Manifest V3 · Chrome Extension APIs',
+      'AI API': 'OpenAI GPT-4 · Prompt Engineering',
+      'Storage': 'Chrome Local Sync Storage',
+      'UI': 'Shadow DOM Injection · Vanilla CSS'
+    },
+    metrics: [
+      '5× Faster proposal drafting',
+      '85% application time reduction',
+      '4.8★ user feedback rating',
+      '< 3s Proposal generation speed'
+    ],
+    outcomes: [
+      'Helped freelancers submit high-quality proposals within minutes of a job post',
+      'Saved hours of manual typing and proofreading',
+      'Built-in formatting tools ensure the output is ready for immediate copy-pasting',
+      'Secure client-side API key and profile details management'
+    ],
+    cta: 'Need a custom Chrome extension or browser automation tool? Let\'s code it.'
   }
 };
 
