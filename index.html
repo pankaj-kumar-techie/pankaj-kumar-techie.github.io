@@ -223,22 +223,7 @@
         They need <span>one person</span> who can build the right thing fast and get out of the way.
       </p>
 
-      <div class="hero-stats-row">
-        <div class="hs">
-          <span class="hs-n" data-count="100" data-suffix="%">0</span>
-          <span class="hs-l">JOB SUCCESS</span>
-        </div>
-        <div class="hs-div"></div>
-        <div class="hs">
-          <span class="hs-n">5.0★</span>
-          <span class="hs-l">UPWORK</span>
-        </div>
-        <div class="hs-div"></div>
-        <div class="hs">
-          <span class="hs-n" data-count="4">0</span>
-          <span class="hs-l">COUNTRIES</span>
-        </div>
-      </div>
+
 
       <div class="hero-ctas">
         <a href="#contact" class="btn-a">
@@ -285,9 +270,9 @@
       <!-- messages injected by JS -->
     </div>
     <div class="term-quick-actions">
-      <span class="term-action-chip" onclick="handleQuickCmd('hire')">▸ INITIATE MISSION</span>
-      <span class="term-action-chip" onclick="handleQuickCmd('mission')">▸ VIEW MISSION</span>
-      <span class="term-action-chip" onclick="handleQuickCmd('help')">▸ HELP COMMANDS</span>
+      <span class="term-action-chip" onclick="handleQuickCmd('build')">▸ 🛠️ BUILD MVP</span>
+      <span class="term-action-chip" onclick="handleQuickCmd('automate')">▸ 🤖 AUTOMATE WORKFLOW</span>
+      <span class="term-action-chip" onclick="handleQuickCmd('help')">▸ 💡 HELP COMMANDS</span>
     </div>
     <div class="term-input-row">
       <span class="term-prompt">&gt;_</span>
@@ -303,36 +288,49 @@
     <h2 class="s-head">WHAT<br>I BUILD</h2>
     <div class="cap-grid">
       <div class="cap-card">
-        <span class="cap-n">MODULE_01</span>
-        <span class="cap-icon">🤖</span>
-        <div class="cap-name">ZERO-TOUCH OPERATIONS</div>
-        <div class="cap-desc">Autonomous agents on your stack — WhatsApp, Slack, Discord — built with OpenClaw, Claude & MCP. Zero human input required.
+        <span class="cap-n">SYSTEM_01</span>
+        <div class="cap-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cap-svg">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
         </div>
-        <div class="cap-tags"><span class="ct">OpenClaw</span><span class="ct">WhatsApp</span><span
-            class="ct">Slack</span></div>
+        <div class="cap-name">AI AGENTS & INTEGRATION</div>
+        <div class="cap-desc">Autonomous agents connected to your stack—WhatsApp, Slack, Discord, and CRMs—built with Claude, OpenAI, and MCP.
+        </div>
+        <div class="cap-tags"><span class="ct">AI Agents</span><span class="ct">Slack</span><span class="ct">WhatsApp</span></div>
       </div>
       <div class="cap-card">
-        <span class="cap-n">MODULE_02</span>
-        <span class="cap-icon">🧠</span>
-        <div class="cap-name">INSTANT ANSWERS FROM YOUR DATA</div>
-        <div class="cap-desc">AI trained on YOUR data. Knows your business. Deployed in days, not weeks.</div>
-        <div class="cap-tags"><span class="ct">RAG</span><span class="ct">Pinecone</span><span class="ct">OpenAI</span>
+        <span class="cap-n">SYSTEM_02</span>
+        <div class="cap-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cap-svg">
+            <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8a3 3 0 0 0-3 3"/>
+          </svg>
         </div>
+        <div class="cap-name">RAG & KNOWLEDGE BASES</div>
+        <div class="cap-desc">AI agents trained on your proprietary data. Retrieve customer context, generate invoices, or compile reports in milliseconds.</div>
+        <div class="cap-tags"><span class="ct">RAG</span><span class="ct">Pinecone</span><span class="ct">PostgreSQL</span></div>
       </div>
       <div class="cap-card">
-        <span class="cap-n">MODULE_03</span>
-        <span class="cap-icon">⚡</span>
-        <div class="cap-name">15+ HOURS RECLAIMED WEEKLY</div>
-        <div class="cap-desc">Leads, emails, docs — automated end to end, per client.</div>
-        <div class="cap-tags"><span class="ct">n8n</span><span class="ct">APIs</span><span class="ct">Make</span></div>
+        <span class="cap-n">SYSTEM_03</span>
+        <div class="cap-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cap-svg">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+          </svg>
+        </div>
+        <div class="cap-name">WORKFLOW AUTOMATION</div>
+        <div class="cap-desc">Cross-platform n8n integrations that automatically sync leads, sync CRM pipelines, and handle repetitive back-office operations.</div>
+        <div class="cap-tags"><span class="ct">n8n</span><span class="ct">APIs</span><span class="ct">Workflows</span></div>
       </div>
       <div class="cap-card">
-        <span class="cap-n">MODULE_04</span>
-        <span class="cap-icon">🚀</span>
-        <div class="cap-name">IDEA TO LIVE PRODUCT</div>
-        <div class="cap-desc">In weeks, not months. Next.js + AI + Stripe. Zero revisions track record.</div>
-        <div class="cap-tags"><span class="ct">Next.js</span><span class="ct">FastAPI</span><span class="ct">AWS</span>
+        <span class="cap-n">SYSTEM_04</span>
+        <div class="cap-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cap-svg">
+            <path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/>
+          </svg>
         </div>
+        <div class="cap-name">MVP TO PRODUCTION</div>
+        <div class="cap-desc">Launch-ready products shipped in 3 to 6 weeks, built with robust architectures (Next.js, FastAPI, PostgreSQL) and clean hand-offs.</div>
+        <div class="cap-tags"><span class="ct">Next.js</span><span class="ct">FastAPI</span><span class="ct">SaaS</span></div>
       </div>
     </div>
   </section>
@@ -516,21 +514,18 @@
       </h2>
       <p class="ct-sub">Free 20-30 min call. I'll tell you if it's worth building — no 40-page proposal, no $5K discovery phase.</p>
 
-      <!-- Direct Project Scoping Form -->
-      <form id="direct-contact-form" class="ct-form r">
-        <div class="form-row">
-          <input type="text" id="contact-name" placeholder="YOUR NAME" required autocomplete="name" aria-label="Your Name">
-          <input type="email" id="contact-email" placeholder="YOUR EMAIL" required autocomplete="email" aria-label="Your Email">
-        </div>
-        <textarea id="contact-brief" placeholder="WHAT BUSINESS PROCESS DO YOU WANT TO AUTOMATE OR BUILD? (Brief description)" required rows="4" aria-label="Project Brief Description"></textarea>
-        <button type="submit" class="ch-submit-btn">
+      <!-- Interactive Scoping Bot CTA -->
+      <div class="ct-bot-cta r" style="text-align: center; margin: 30px auto 40px;">
+        <p class="ct-bot-desc" style="max-width: 500px; margin: 0 auto 20px; font-family: 'Share Tech Mono', monospace; font-size: 12px; color: rgba(0, 255, 200, 0.6); line-height: 1.6;">
+          Our primary project scoping is handled interactively by PANKAJ.AI's automated systems architect. The bot will qualify your parameters in 90 seconds.
+        </p>
+        <button onclick="scrollToTerminalAndBuild('contact')" class="ch-submit-btn" style="max-width: 320px; margin: 0 auto;">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
             <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
           </svg>
-          SUBMIT PROJECT BRIEF
+          LAUNCH INTERACTIVE SCOPING BOT
         </button>
-        <div id="contact-status" class="contact-status-msg"></div>
-      </form>
+      </div>
 
       <div class="channels">
         <a href="mailto:pankajkumar.techie@gmail.com" class="ch ch-email">

@@ -561,7 +561,23 @@ body::after {
 .cap-card:hover { border-color: rgba(0, 255, 200, 0.35); background: rgba(4, 20, 40, 0.95); }
 .cap-card:hover::before { transform: scaleX(1); }
 .cap-n { font-size: 9px; letter-spacing: 0.2em; color: var(--muted); margin-bottom: 12px; display: block; }
-.cap-icon { font-size: 24px; margin-bottom: 10px; display: block; }
+.cap-icon {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 28px;
+  margin-bottom: 12px;
+}
+.cap-svg {
+  stroke: var(--cyan);
+  filter: drop-shadow(0 0 4px rgba(0, 255, 200, 0.4));
+  transition: transform 0.3s ease;
+}
+.cap-card:hover .cap-svg {
+  transform: scale(1.1);
+  stroke: #ffffff;
+  filter: drop-shadow(0 0 8px rgba(0, 255, 200, 0.7));
+}
 .cap-name {
   font-family: 'Orbitron', monospace; font-size: 13px;
   font-weight: 700; letter-spacing: 0.06em; margin-bottom: 8px;
@@ -1261,6 +1277,118 @@ body::after {
   .form-row {
     flex-direction: column;
     gap: 16px;
+  }
+}
+
+/* ─── MOBILE RESPONSIVE UI/UX OPTIMIZATIONS (CTO, FOUNDER METRICS) ─── */
+@media (max-width: 767px) {
+  /* Header statusbar adjustments */
+  #statusbar {
+    padding: 0 16px !important;
+  }
+  .sb-logo { font-size: 11px !important; }
+  .sb-status { display: none !important; }
+  .sb-hire { font-size: 8px !important; padding: 4px 8px !important; }
+
+  /* Hero Section: Stack photo and content vertically to avoid overlap */
+  #hero {
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: auto !important;
+    padding-top: 56px !important;
+    padding-bottom: 30px !important;
+    height: auto !important;
+  }
+  .photo-zone {
+    position: relative !important;
+    width: 100% !important;
+    height: 240px !important;
+    margin-bottom: 20px !important;
+    order: 1 !important;
+    border-bottom: 1px solid var(--border) !important;
+    top: auto !important;
+    right: auto !important;
+  }
+  .photo-zone img {
+    height: 100% !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    object-position: center 10% !important;
+    opacity: 0.8 !important; /* Brighter visibility for the partner portrait */
+  }
+  .scan-ring {
+    bottom: 50% !important;
+    right: 50% !important;
+    transform: translate(50%, 50%) !important;
+    width: 160px !important;
+    height: 160px !important;
+  }
+  .scan-label {
+    top: -16px !important;
+    font-size: 8px !important;
+  }
+  .hero-text {
+    position: relative !important;
+    padding: 0 20px !important;
+    order: 2 !important;
+    max-width: 100% !important;
+    gap: 10px !important;
+  }
+  .hero-name {
+    font-size: clamp(34px, 10vw, 52px) !important;
+    margin-bottom: 8px !important;
+    line-height: 0.9 !important;
+  }
+  .hero-sub {
+    font-size: 11px !important;
+    line-height: 1.55 !important;
+    margin-bottom: 16px !important;
+  }
+  .hero-stats-row {
+    margin-bottom: 16px !important;
+    gap: 12px !important;
+  }
+  .hud-data {
+    display: none !important; /* Hide cluttered code numbers overlaying the image */
+  }
+
+  /* Capabilities Grid: Stack cards in 1 column instead of squished 2 columns */
+  .cap-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  .cap-card {
+    padding: 20px 16px !important;
+  }
+
+  /* Process Section spacing: Spaced vertical timeline list */
+  .process-grid {
+    gap: 12px !important;
+  }
+  .step {
+    padding: 16px !important;
+    gap: 12px !important;
+  }
+  .step-n {
+    font-size: 18px !important;
+  }
+  .step-q {
+    font-size: 13px !important;
+  }
+  
+  /* Testimonial card sizing */
+  .pf {
+    padding: 16px !important;
+  }
+  .pf-q {
+    font-size: 11px !important;
+    line-height: 1.6 !important;
+  }
+
+  /* Lead qualification Bot description and CTA styling */
+  .ct-bot-desc {
+    font-size: 11px !important;
+    padding: 0 10px !important;
   }
 }
 

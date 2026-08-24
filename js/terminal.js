@@ -205,21 +205,23 @@ async function sendMessage() {
 }
 
 // ================= BOOT SEQUENCE =================
-async function boot() {
+async function boot(immediate = false) {
   if (hasBooted) return;
   hasBooted = true;
 
   const bootLines = [
     { t: `🔄 Initializing ${BOT_NAME}...`, d: 300 },
     { t: `👤 Visitor ID: ${visitorId}`, d: 200 },
-    { t: `✅ System online. I'm an AI assistant that helps qualify projects for Pankaj.`, d: 500 },
-    { t: `💡 Tip: Type \`help\` for commands, or \`contact\` to start the intake form.`, d: 600, html: true },
-    { t: "How can I help you today?", d: 400 }
+    { t: `✅ System online. I am Pankaj's AI Systems Architect.`, d: 500 },
+    { t: `💡 Click one of the quick pathway chips below (or type it) to begin scoping:`, d: 600 },
+    { t: "Select BUILD MVP or AUTOMATE WORKFLOW.", d: 400 }
   ];
 
   for (const line of bootLines) {
     addMsg('bot', line.t, line.html);
-    await new Promise(r => setTimeout(r, line.d));
+    if (!immediate) {
+      await new Promise(r => setTimeout(r, line.d));
+    }
   }
 
   if (!sessionStorage.getItem('pankaj_visit_logged')) {
@@ -328,3 +330,31 @@ function sendSessionEnd() {
 }
 window.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') sendSessionEnd(); });
 window.addEventListener('pagehide', sendSessionEnd);
+
+// ─── SCROLL TO TERMINAL & LAUNCH SCOPING FLOW ───
+window.scrollToTerminalAndBuild = function(cmd = 'build') {
+  const termSection = document.getElementById('terminal');
+  if (termSection) {
+    termSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    
+    if (!hasBooted) {
+      boot(true).then(() => {
+        executeCommand(cmd);
+      });
+    } else {
+      setTimeout(() => {
+        executeCommand(cmd);
+      }, 400);
+    }
+  }
+};
+
+function executeCommand(cmd) {
+  const termInput = document.getElementById('term-input');
+  if (termInput) {
+    termInput.focus();
+    termInput.value = cmd;
+    const sendBtn = document.getElementById('term-send');
+    if (sendBtn) sendBtn.click();
+  }
+}
