@@ -181,3 +181,37 @@ const cObs = new IntersectionObserver(ents => {
   });
 }, { threshold: 0.5 });
 document.querySelectorAll('[data-count]').forEach(el => cObs.observe(el));
+
+// ─── SCROLL SPY FOR STATUSBAR NAVIGATION ───
+document.addEventListener('DOMContentLoaded', () => {
+  const sections = document.querySelectorAll('section[id], header[id]');
+  const navLinks = document.querySelectorAll('.sb-mid .sb-nav-link');
+  
+  if (navLinks.length > 0 && sections.length > 0) {
+    const scrollSpy = () => {
+      let currentId = '';
+      const scrollPosition = window.scrollY + 180; // offset for fixed statusbar header
+      
+      sections.forEach(sec => {
+        const top = sec.offsetTop;
+        const height = sec.offsetHeight;
+        if (scrollPosition >= top && scrollPosition < top + height) {
+          currentId = sec.getAttribute('id');
+        }
+      });
+      
+      if (currentId) {
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          const href = link.getAttribute('href');
+          if (href && (href === `#${currentId}` || href.endsWith(`#${currentId}`))) {
+            link.classList.add('active');
+          }
+        });
+      }
+    };
+    
+    window.addEventListener('scroll', scrollSpy);
+    setTimeout(scrollSpy, 150); // run delayed to align with initial layout offsets
+  }
+});

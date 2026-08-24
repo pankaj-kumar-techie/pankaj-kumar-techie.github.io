@@ -168,13 +168,15 @@ body::after {
   font-size: 10px;
   font-family: 'Share Tech Mono', monospace;
   letter-spacing: 0.12em;
-  transition: color 0.2s;
+  transition: all 0.25s ease;
   padding: 4px 6px;
   text-transform: uppercase;
+  opacity: 0.85;
 }
-.sb-nav-link:hover {
+.sb-nav-link:hover, .sb-nav-link.active {
   color: var(--cyan);
   text-shadow: 0 0 8px rgba(0, 255, 200, 0.4);
+  opacity: 1;
 }
 
 @media (max-width: 767px) {
