@@ -161,10 +161,16 @@ async function sendMessage() {
     return;
   }
 
-  if (lowerMsg === 'contact' || lowerMsg === 'hire') {
+  if (lowerMsg === 'contact' || lowerMsg === 'hire' || lowerMsg === 'build' || lowerMsg === 'automate') {
     intakeActive = true;
     currentStep = 0;
-    addMsg('bot', INTAKE_STEPS[0]);
+    let intro = INTAKE_STEPS[0];
+    if (lowerMsg === 'build') {
+      intro = "🛠️ Let's scope your SaaS/MVP build. To start, what is your full name?";
+    } else if (lowerMsg === 'automate') {
+      intro = "🤖 Let's automate your workflows. To start, what is your full name?";
+    }
+    addMsg('bot', intro);
     return;
   }
 
