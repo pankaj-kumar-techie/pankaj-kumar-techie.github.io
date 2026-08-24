@@ -156,6 +156,33 @@ body::after {
 .r2 { transform: translateX(-15px); }
 .r.v, .r2.v, .v { opacity: 1; transform: none; }
 
+/* ─── STATUSBAR MID-NAVIGATION ─── */
+.sb-mid {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.sb-nav-link {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 10px;
+  font-family: 'Share Tech Mono', monospace;
+  letter-spacing: 0.12em;
+  transition: color 0.2s;
+  padding: 4px 6px;
+  text-transform: uppercase;
+}
+.sb-nav-link:hover {
+  color: var(--cyan);
+  text-shadow: 0 0 8px rgba(0, 255, 200, 0.4);
+}
+
+@media (max-width: 767px) {
+  .sb-mid {
+    display: none;
+  }
+}
+
 @media (min-width: 768px) {
   #statusbar { padding: 0 40px; }
   .section { padding: 80px 60px; }

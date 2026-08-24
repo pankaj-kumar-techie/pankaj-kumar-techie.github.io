@@ -494,6 +494,47 @@ body::after {
 }
 .s-tag.v, .s-head.v { opacity: 1; transform: none; }
 
+/* ─── HOW I WORK ─── */
+#process { background: var(--deep); }
+.process-grid {
+  display: grid;
+  gap: 2px;
+  margin-bottom: 28px;
+}
+.step {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  padding: 20px 24px;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  transition: border-color .3s, background .3s;
+}
+.step:hover { border-color: rgba(0, 255, 200, 0.35); background: rgba(4, 20, 40, 0.95); }
+.step-n {
+  font-family: 'Orbitron', monospace;
+  font-size: 22px; font-weight: 900;
+  color: var(--cyan); opacity: 0.45;
+  flex-shrink: 0; line-height: 1;
+  min-width: 30px;
+}
+.step-q {
+  font-family: 'Exo 2', sans-serif; font-size: 14px; font-weight: 600;
+  color: var(--cyan); margin-bottom: 6px;
+}
+.step-d { font-size: 11px; color: rgba(0, 255, 200, 0.5); line-height: 1.7; }
+.process-outcome {
+  background: var(--panel); border: 1px solid var(--border); border-left: 2px solid var(--cyan);
+  padding: 20px 24px; margin-bottom: 28px;
+  font-size: 12px; color: rgba(0, 255, 200, 0.6); line-height: 1.8;
+}
+.process-outcome strong { color: var(--cyan); }
+.process-cta-row { text-align: center; }
+
+@media (min-width: 768px) {
+  .process-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+}
+
 /* ─── CAPABILITIES ─── */
 #cap { background: linear-gradient(180deg, var(--void), var(--deep)); }
 .cap-grid {
@@ -1115,5 +1156,111 @@ body::after {
   position: fixed; top: 0; left: 0; width: 0%; height: 2px;
   background: linear-gradient(90deg, var(--cyan), var(--blue));
   z-index: 1000; transition: width 0.1s;
+}
+
+/* ─── TERMINAL QUICK ACTIONS ─── */
+.term-quick-actions {
+  background: rgba(0, 8, 16, 0.95);
+  border: 1px solid var(--border);
+  border-bottom: none;
+  padding: 8px 16px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.term-action-chip {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  color: var(--cyan);
+  border: 1px solid rgba(0, 255, 200, 0.2);
+  background: rgba(0, 255, 200, 0.02);
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.05em;
+}
+.term-action-chip:hover {
+  background: rgba(0, 255, 200, 0.1);
+  border-color: var(--cyan);
+  box-shadow: 0 0 10px rgba(0, 255, 200, 0.25);
+}
+
+/* ─── DIRECT CONTACT FORM ─── */
+.ct-form {
+  max-width: 600px;
+  margin: 32px auto 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+.form-row input, .ct-form textarea {
+  background: rgba(0, 8, 16, 0.95);
+  border: 1px solid var(--border);
+  color: var(--cyan);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  padding: 12px 16px;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-row input:focus, .ct-form textarea:focus {
+  border-color: var(--cyan);
+  box-shadow: 0 0 10px rgba(0, 255, 200, 0.2);
+}
+.ch-submit-btn {
+  background: var(--cyan);
+  color: var(--void);
+  border: none;
+  padding: 14px 24px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+.ch-submit-btn:hover {
+  box-shadow: 0 0 20px rgba(0, 255, 200, 0.4);
+  transform: translateY(-1px);
+}
+.ch-submit-btn:disabled {
+  background: var(--muted);
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+.contact-status-msg {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  text-align: center;
+  min-height: 16px;
+  transition: color 0.2s;
+}
+.contact-status-msg.success {
+  color: #00ff66;
+  text-shadow: 0 0 8px rgba(0, 255, 102, 0.3);
+}
+.contact-status-msg.error {
+  color: #ff3355;
+  text-shadow: 0 0 8px rgba(255, 51, 85, 0.3);
+}
+
+@media (max-width: 500px) {
+  .form-row {
+    flex-direction: column;
+    gap: 16px;
+  }
 }
 

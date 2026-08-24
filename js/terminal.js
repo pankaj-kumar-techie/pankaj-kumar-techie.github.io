@@ -125,6 +125,8 @@ async function handleIntake(userInput) {
       await sendLeadToWorker(leadData);
       hideTyping();
       addMsg('bot', `✅ **Lead captured successfully!** Pankaj will personally review your request and reply to **${leadData.email}** within 4 hours. Thank you!`, true);
+      // Dispatch analytics event
+      window.dispatchEvent(new CustomEvent('lead_submitted', { detail: { source: 'Terminal Intake', name: leadData.name, email: leadData.email } }));
       intakeActive = false;
       currentStep = 0;
       leadData = { name: '', email: '', problem: '' };
@@ -185,6 +187,8 @@ async function sendMessage() {
     chatHistory.push({ role: "user", parts: [{ text: rawMessage }] });
     chatHistory.push({ role: "model", parts: [{ text: aiResponse }] });
     if (chatHistory.length > 20) chatHistory = chatHistory.slice(-20);
+    // Dispatch analytics event
+    window.dispatchEvent(new CustomEvent('terminal_command', { detail: { command: rawMessage } }));
   } catch (err) {
     hideTyping();
     addMsg('sys', '⚠️ Service Interrupted. Please <a href="mailto:pankajkumar.techie@gmail.com" style="color:#00ff00;">Email Pankaj Directly</a>.', true);
@@ -239,11 +243,81 @@ termInput.addEventListener('keypress', (e) => {
 const sendBtn = document.getElementById('term-send');
 if (sendBtn) sendBtn.addEventListener('click', sendMessage);
 
+// ================= QUICK COMMAND HANDLER =================
+window.handleQuickCmd = function(cmd) {
+  if (isProcessing) return;
+  termInput.value = cmd;
+  sendMessage();
+  // Dispatch custom event for analytics tracking
+  window.dispatchEvent(new CustomEvent('terminal_quick_command', { detail: { command: cmd } }));
+};
+
+// ================= DIRECT CONTACT FORM =================
+document.addEventListener('DOMContentLoaded', () => {
+  const contactForm = document.getElementById('direct-contact-form');
+  const contactStatus = document.getElementById('contact-status');
+  
+  if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('contact-name').value.trim();
+      const email = document.getElementById('contact-email').value.trim();
+      const brief = document.getElementById('contact-brief').value.trim();
+      
+      const submitBtn = contactForm.querySelector('.ch-submit-btn');
+      const originalText = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '🤖 TRANSMITTING SIGNAL...';
+      
+      if (contactStatus) {
+        contactStatus.textContent = '';
+        contactStatus.className = 'contact-status-msg';
+      }
+      
+      try {
+        const response = await fetch(`${WORKER_URL}/webhook/lead`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            clientName: name,
+            email: email,
+            description: brief,
+            visitorId,
+            source: 'Direct Web Form'
+          })
+        });
+        
+        if (!response.ok) throw new Error();
+        
+        if (contactStatus) {
+          contactStatus.textContent = '✅ SIGNAL RECEIVED! Pankaj will contact you within 4 hours.';
+          contactStatus.classList.add('success');
+        }
+        
+        // Dispatch custom event for analytics tracking
+        window.dispatchEvent(new CustomEvent('lead_submitted', { detail: { source: 'Direct Web Form', name, email } }));
+        
+        contactForm.reset();
+      } catch (err) {
+        if (contactStatus) {
+          contactStatus.textContent = '⚠️ TRANSMISSION ERROR. Please email directly or hire via Upwork.';
+          contactStatus.classList.add('error');
+        }
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+      }
+    });
+  }
+});
+
 let startTime = Date.now();
 function sendSessionEnd() {
   const duration = Math.floor((Date.now() - startTime) / 1000);
   if (duration > 5) {
-    navigator.sendBeacon(`${WORKER_URL}/webhook/session_end`, JSON.stringify({ visitorId, duration }));
+    try {
+      navigator.sendBeacon(`${WORKER_URL}/webhook/session_end`, JSON.stringify({ visitorId, duration }));
+    } catch(e) {}
   }
 }
 window.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') sendSessionEnd(); });

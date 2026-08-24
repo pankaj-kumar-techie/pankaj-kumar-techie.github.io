@@ -111,6 +111,25 @@
     ]
   }
   </script>
+  <!-- OPTIONAL ANALYTICS PREPARATION (Google Analytics, Plausible, Clarity) -->
+  <!-- Uncomment and replace placeholders to activate tracking -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  <script defer data-domain="pankaj-kumar-techie.github.io" src="https://plausible.io/js/script.js"></script>
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window,document,"clarity","script","XXXXXXXXXX");
+  </script>
+  -->
 </head>
 
 <body>
@@ -132,12 +151,20 @@
   <!-- STATUS BAR -->
   <div id="statusbar">
     <div class="sb-left">
-      <div class="sb-logo">PANKAJ.AI</div>
+      <a href="index.html" class="sb-logo">PANKAJ.AI</a>
       <span class="sb-sep hide-mob">|</span>
       <div class="sb-status">
         <span class="online-dot"></span>
         <span class="hide-mob">AGENT ONLINE</span>
       </div>
+    </div>
+    <div class="sb-mid hide-mob">
+      <a href="#cap" class="sb-nav-link">CAPABILITIES</a>
+      <a href="#metrics" class="sb-nav-link">METRICS</a>
+      <a href="#process" class="sb-nav-link">PROCESS</a>
+      <a href="#work" class="sb-nav-link">SYSTEMS</a>
+      <a href="#proof" class="sb-nav-link">REVIEWS</a>
+      <a href="#contact" class="sb-nav-link">CONTACT</a>
     </div>
     <div class="sb-right">
       <span id="live-clock" class="hide-mob">--:--:--</span>
@@ -257,6 +284,11 @@
     <div class="term-body" id="term-body">
       <!-- messages injected by JS -->
     </div>
+    <div class="term-quick-actions">
+      <span class="term-action-chip" onclick="handleQuickCmd('hire')">▸ INITIATE MISSION</span>
+      <span class="term-action-chip" onclick="handleQuickCmd('mission')">▸ VIEW MISSION</span>
+      <span class="term-action-chip" onclick="handleQuickCmd('help')">▸ HELP COMMANDS</span>
+    </div>
     <div class="term-input-row">
       <span class="term-prompt">&gt;_</span>
       <input class="  term-input" id="term-input" type="text" placeholder="Initializing AI Systems Architect..."
@@ -326,6 +358,53 @@
         <span class="met-num" data-count="99" data-suffix="%">0</span>
         <div class="met-label">System<br>Uptime</div>
       </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process" class="section">
+    <div class="s-tag r">Execution Path</div>
+    <h2 class="s-head r">HOW I<br>DELIVER</h2>
+    <div class="process-grid r">
+      <div class="step r">
+        <span class="step-n">01</span>
+        <div>
+          <div class="step-q">20-Min Alignment Call</div>
+          <div class="step-d">We review your bottleneck. I tell you honestly if it's worth automating or building. No sales pitch, no fluff.</div>
+        </div>
+      </div>
+      <div class="step r">
+        <span class="step-n">02</span>
+        <div>
+          <div class="step-q">Fixed-Scope Proposal</div>
+          <div class="step-d">You get a single-page blueprint with exact outcomes, fixed pricing, and shipping dates. Zero hidden fees.</div>
+        </div>
+      </div>
+      <div class="step r">
+        <span class="step-n">03</span>
+        <div>
+          <div class="step-q">Weekly Iterations & Demos</div>
+          <div class="step-d">We run weekly visual demos. You interact with active staging builds to ensure it matches your business requirements.</div>
+        </div>
+      </div>
+      <div class="step r">
+        <span class="step-n">04</span>
+        <div>
+          <div class="step-q">Production Hand-off</div>
+          <div class="step-d">We deploy systems directly to your cloud (AWS/Vercel/n8n). I train your team and provide 30 days of support.</div>
+        </div>
+      </div>
+    </div>
+    <div class="process-outcome r">
+      The Result: <strong>A premium system running autonomously on your stack in 3-6 weeks</strong>, saving you 15+ hours/week and thousands in overhead.
+    </div>
+    <div class="process-cta-row r">
+      <a href="#contact" class="btn-a" style="display: inline-flex; max-width: 250px;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="margin-right:8px;">
+          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+        </svg>
+        BOOK SCOPING CALL
+      </a>
     </div>
   </section>
 
@@ -468,6 +547,23 @@
         <span class="ct-h2">MISSION</span>
       </h2>
       <p class="ct-sub">Free 20-30 min call. I'll tell you if it's worth building — no 40-page proposal, no $5K discovery phase.</p>
+
+      <!-- Direct Project Scoping Form -->
+      <form id="direct-contact-form" class="ct-form r">
+        <div class="form-row">
+          <input type="text" id="contact-name" placeholder="YOUR NAME" required autocomplete="name">
+          <input type="email" id="contact-email" placeholder="YOUR EMAIL" required autocomplete="email">
+        </div>
+        <textarea id="contact-brief" placeholder="WHAT BUSINESS PROCESS DO YOU WANT TO AUTOMATE OR BUILD? (Brief description)" required rows="4"></textarea>
+        <button type="submit" class="ch-submit-btn">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+          </svg>
+          SUBMIT PROJECT BRIEF
+        </button>
+        <div id="contact-status" class="contact-status-msg"></div>
+      </form>
+
       <div class="channels">
         <a href="mailto:pankajkumar.techie@gmail.com" class="ch ch-email">
           <span class="ch-icon">✉</span>
