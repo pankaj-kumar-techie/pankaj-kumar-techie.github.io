@@ -1317,11 +1317,12 @@ body::after {
     opacity: 0.8 !important; /* Brighter visibility for the partner portrait */
   }
   .scan-ring {
-    bottom: 50% !important;
+    top: 106px !important;
+    bottom: auto !important;
     right: 50% !important;
-    transform: translate(50%, 50%) !important;
-    width: 160px !important;
-    height: 160px !important;
+    transform: translate(50%, 0) !important;
+    width: 140px !important;
+    height: 140px !important;
   }
   .scan-label {
     top: -16px !important;
