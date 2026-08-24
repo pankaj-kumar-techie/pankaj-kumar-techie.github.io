@@ -45,6 +45,8 @@ section { position: relative; z-index: 10; padding: 60px 20px; }
 .tag { font-size: 9px; letter-spacing: .1em; color: var(--accent); border: 1px solid var(--accent-mid); background: var(--accent-low); padding: 4px 10px; text-transform: uppercase; }
 .case-chips { display: flex; flex-wrap: wrap; gap: 8px; animation: fup .6s .85s ease both; opacity: 0; }
 .chip { font-size: 10px; letter-spacing: .08em; color: var(--accent); border: 1px solid var(--accent-glow); background: var(--accent-low); padding: 4px 12px; }
+.cta-btn-mini { margin-top: 28px; padding: 12px 22px; font-size: 10px; box-shadow: none; animation: fup .6s 1s ease both; opacity: 0; }
+.cta-btn-mini:hover { box-shadow: 0 0 30px var(--accent-glow); }
 @keyframes fup { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 
 .sec-tag { font-size: 9px; letter-spacing: .25em; color: var(--muted); text-transform: uppercase; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
@@ -105,6 +107,14 @@ section { position: relative; z-index: 10; padding: 60px 20px; }
 .cta-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: var(--void); font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: .15em; font-weight: 700; padding: 16px 32px; text-decoration: none; text-transform: uppercase; box-shadow: 0 0 30px var(--accent-glow); transition: all .4s cubic-bezier(0.4, 0, 0.2, 1); }
 .cta-btn:hover { box-shadow: 0 0 50px var(--accent-glow); transform: translateY(-2px); }
 .avail { font-size: 9px; letter-spacing: .18em; color: var(--green); margin-top: 16px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+
+#case-testimonial { background: var(--deep); display: flex; justify-content: center; }
+.testimonial-card { max-width: 640px; background: var(--panel); border: 1px solid var(--accent-mid); border-left: 2px solid var(--accent); padding: 32px 28px; }
+.testimonial-stars { color: var(--accent); font-size: 14px; letter-spacing: .1em; margin-bottom: 14px; }
+.testimonial-text { font-family: 'Exo 2', sans-serif; font-size: 15px; font-weight: 300; font-style: italic; color: rgba(0, 255, 200, .85); line-height: 1.8; margin-bottom: 18px; }
+.testimonial-meta { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+.testimonial-who { font-size: 10px; letter-spacing: .12em; color: var(--muted); text-transform: uppercase; }
+.testimonial-badge { font-size: 9px; letter-spacing: .1em; color: var(--accent); border: 1px solid var(--accent-mid); background: var(--accent-low); padding: 3px 10px; text-transform: uppercase; }
 
 /* ─── MARKDOWN CONTENT STYLES ─── */
 .portfolio-md-content {

@@ -169,7 +169,7 @@ const PORTFOLIO_DATA = {
       'Automated notifications triggered on every property status change',
       'Production AWS deployment with CI/CD pipeline — zero manual deploys'
     ],
-    cta: 'I can build the same system — customised to your workflow — within 7 days. Let\'s talk.'
+    cta: 'I can build the same system for your business. Free 20-30 min call — I\'ll tell you if it\'s worth building, and how fast.'
   },
 
   'reddit-lead-gen': {
@@ -512,7 +512,7 @@ const PORTFOLIO_DATA = {
 
 // ─── TEMPLATE ENGINE ───
 function generatePortfolioContent(portfolio) {
-  const { brief, problem, solution, tech_stack, metrics, outcomes, cta } = portfolio;
+  const { brief, problem, solution, tech_stack, metrics, outcomes } = portfolio;
 
   return `# Mission Brief
 
@@ -546,13 +546,7 @@ ${metrics.map(metric => `- **${metric.split(' ')[0]}** ${metric.substring(metric
 
 ## Mission Outcomes
 
-${outcomes.map(outcome => `- ${outcome}`).join('\n')}
-
----
-
-## Want This For Your Biz?
-
-${cta}`;
+${outcomes.map(outcome => `- ${outcome}`).join('\n')}`;
 }
 
 // Generate content for all portfolios

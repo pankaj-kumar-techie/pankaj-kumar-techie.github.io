@@ -18,7 +18,7 @@ function loadPortfolio() {
     const htmlContent = marked.parse(portfolio.content);
     
     // Render page
-    renderPortfolioPage(portfolio, htmlContent);
+    renderPortfolioPage(portfolio, htmlContent, portfolioName);
     
   } catch (error) {
     console.error('Error loading portfolio:', error);
@@ -32,7 +32,7 @@ function loadPortfolio() {
   }
 }
 
-function renderPortfolioPage(meta, htmlContent) {
+function renderPortfolioPage(meta, htmlContent, slug) {
   const contentContainer = document.getElementById('portfolio-content');
   const body = document.getElementById('portfolio-body');
   
@@ -65,7 +65,24 @@ function renderPortfolioPage(meta, htmlContent) {
     
     navHtml += '</div><div class="back-row"><a href="missions.html" class="back-all">← BACK TO ALL PROJECTS</a></div></div>';
   }
-  
+
+  // Find a client review that references this exact mission, if any
+  let testimonialHtml = '';
+  if (typeof PANKAJ_DB !== 'undefined' && PANKAJ_DB.reviews) {
+    const review = PANKAJ_DB.reviews.find(r => r.mission === slug);
+    if (review) {
+      testimonialHtml = `
+        <section id="case-testimonial" class="section">
+          <div class="testimonial-card">
+            <div class="testimonial-stars">${review.stars}</div>
+            <p class="testimonial-text">"${review.text}"</p>
+            <div class="testimonial-meta"><span class="testimonial-who">${review.who}</span><span class="testimonial-badge">${review.badge}</span></div>
+          </div>
+        </section>
+      `;
+    }
+  }
+
   // Render page
   contentContainer.innerHTML = `
     <!-- HERO -->
@@ -75,6 +92,10 @@ function renderPortfolioPage(meta, htmlContent) {
       <p class="case-tagline">${meta.tagline}</p>
       <div class="case-tags">${tagsHtml}</div>
       <div class="case-chips">${chipsHtml}</div>
+      <a href="index.html#contact" class="cta-btn cta-btn-mini">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        NEED SOMETHING LIKE THIS?
+      </a>
     </div>
 
     <!-- OVERVIEW SECTION -->
@@ -89,10 +110,13 @@ function renderPortfolioPage(meta, htmlContent) {
       ${htmlContent}
     </div>
 
+    <!-- TESTIMONIAL -->
+    ${testimonialHtml}
+
     <!-- CTA -->
     <section id="case-cta" class="section">
       <h2 class="cta-head">WANT THIS<br>FOR YOUR BIZ?</h2>
-      <p class="cta-sub">I can build the same system — customised to your workflow — within 7 days. Let's talk.</p>
+      <p class="cta-sub">${meta.cta}</p>
       <a href="index.html#contact" class="cta-btn">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
         INITIATE PROJECT
@@ -105,7 +129,21 @@ function renderPortfolioPage(meta, htmlContent) {
   `;
   
   // Update document title and meta tags
-  document.title = `${meta.title} — PANKAJ.AI`;
+  const pageTitle = `${meta.title} — PANKAJ.AI`;
+  const pageUrl = `https://pankaj-kumar-techie.github.io/portfolio.html?portfolio=${slug}`;
+  document.title = pageTitle;
+  setMeta('meta-description', 'content', meta.tagline);
+  setMeta('meta-canonical', 'href', pageUrl);
+  setMeta('meta-og-url', 'content', pageUrl);
+  setMeta('meta-og-title', 'content', pageTitle);
+  setMeta('meta-og-description', 'content', meta.tagline);
+  setMeta('meta-twitter-title', 'content', pageTitle);
+  setMeta('meta-twitter-description', 'content', meta.tagline);
+}
+
+function setMeta(id, attr, value) {
+  const el = document.getElementById(id);
+  if (el) el.setAttribute(attr, value);
 }
 
 // Load portfolio on page load

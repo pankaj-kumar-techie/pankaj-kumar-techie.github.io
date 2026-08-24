@@ -155,7 +155,7 @@ async function sendMessage() {
     return;
   }
   if (lowerMsg === 'mission') {
-    addMsg('bot', "My mission is to help businesses reclaim 15+ hours/week through autonomous AI agents. I'm here to understand your needs and connect you with Pankaj.");
+    addMsg('bot', "My mission is to help startup founders ship AI systems & MVPs fast — without hiring a full team. I'm here to scope your project and connect you with Pankaj.");
     return;
   }
 

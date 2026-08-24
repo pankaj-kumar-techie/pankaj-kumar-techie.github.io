@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Mission Archive — PANKAJ.AI</title>
+  <meta name="description" content="12 deployed AI systems — lead qualification engines, email automation, multi-agent platforms, and production SaaS. Real projects, real business outcomes.">
+  <link rel="canonical" href="https://pankaj-kumar-techie.github.io/missions.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;800&display=swap" rel="stylesheet">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
@@ -33,6 +35,12 @@
     .back-all:active { transform: scale(0.95); background: var(--cyan); color: var(--void); }
 
     .arch-footer { padding: 60px 20px; text-align: center; border-top: 1px solid var(--border); color: var(--muted); font-size: 10px; letter-spacing: .1em; }
+
+    #archive-cta { padding: 60px 20px 80px; text-align: center; background: radial-gradient(circle at 50% 0%, #00ffc80f, transparent 70%); }
+    .archive-cta-head { font-family: 'Orbitron', sans-serif; font-size: clamp(22px, 6vw, 40px); font-weight: 900; letter-spacing: .02em; line-height: 1.15; color: var(--cyan); text-shadow: 0 0 40px rgba(0,255,200,0.2); margin-bottom: 14px; }
+    .archive-cta-sub { font-size: 12px; color: var(--muted); letter-spacing: .05em; line-height: 1.7; max-width: 420px; margin: 0 auto 28px; }
+    .archive-cta-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--cyan); color: var(--void); font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: .15em; font-weight: 700; padding: 16px 32px; text-decoration: none; text-transform: uppercase; box-shadow: 0 0 30px rgba(0,255,200,0.25); transition: all .4s cubic-bezier(0.4, 0, 0.2, 1); }
+    .archive-cta-btn:hover { box-shadow: 0 0 50px rgba(0,255,200,0.4); transform: translateY(-2px); }
     
     @media (min-width: 768px) {
       #archive-hero { padding: 160px 20px 100px; }
@@ -66,6 +74,15 @@
 
   <section id="missions-grid" class="r2">
     <!-- Dynamic Content from js/data.js -->
+  </section>
+
+  <section id="archive-cta" class="r">
+    <h2 class="archive-cta-head">SEE A SYSTEM<br>THAT FITS YOUR BUSINESS?</h2>
+    <p class="archive-cta-sub">Free 20-30 min call. I'll tell you if it's worth building, and how fast.</p>
+    <a href="index.html#contact" class="archive-cta-btn">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      START A MISSION
+    </a>
   </section>
 
   <div class="back-row r">
