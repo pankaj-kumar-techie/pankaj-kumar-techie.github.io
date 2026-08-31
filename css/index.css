@@ -1280,89 +1280,258 @@ body::after {
   }
 }
 
-/* ─── MOBILE RESPONSIVE UI/UX OPTIMIZATIONS (CTO, FOUNDER METRICS) ─── */
+/* ─── MOBILE RESPONSIVE UI/UX OPTIMIZATIONS ─── */
 @media (max-width: 767px) {
+  /* HUD Corner overlay adjustments */
+  .hud-corner {
+    width: 28px !important;
+    height: 28px !important;
+  }
+  .hc-tl { top: 8px !important; left: 8px !important; }
+  .hc-tr { top: 8px !important; right: 8px !important; }
+  .hc-bl { bottom: 8px !important; left: 8px !important; }
+  .hc-br { bottom: 8px !important; right: 8px !important; }
+  .hud-corner::before { width: 10px !important; }
+  .hud-corner::after { height: 10px !important; }
+
   /* Header statusbar adjustments */
   #statusbar {
-    padding: 0 16px !important;
+    padding: 0 14px !important;
+    height: 44px !important;
   }
   .sb-logo { font-size: 11px !important; }
   .sb-status { display: none !important; }
-  .sb-hire { font-size: 8px !important; padding: 4px 8px !important; }
+  .sb-hire { 
+    font-size: 9px !important; 
+    padding: 6px 12px !important; 
+    height: 32px !important; 
+    display: inline-flex !important; 
+    align-items: center !important;
+  }
+  .sb-right { gap: 8px !important; }
 
-  /* Hero Section: Stack photo and content vertically to avoid overlap */
+  /* Full Viewport Mobile Hero Banner (Terminal & content show on first scroll) */
   #hero {
     display: flex !important;
     flex-direction: column !important;
-    min-height: auto !important;
-    padding-top: 56px !important;
-    padding-bottom: 30px !important;
-    height: auto !important;
+    justify-content: center !important;
+    position: relative !important;
+    height: calc(100vh - 44px) !important;
+    height: calc(100svh - 44px) !important;
+    min-height: 500px !important;
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
   }
   .photo-zone {
-    position: relative !important;
+    position: absolute !important;
+    inset: 0 !important;
     width: 100% !important;
-    height: 240px !important;
-    margin-bottom: 20px !important;
-    order: 1 !important;
-    border-bottom: 1px solid var(--border) !important;
-    top: auto !important;
-    right: auto !important;
+    height: 100% !important;
+    margin-bottom: 0 !important;
+    border-bottom: none !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    z-index: 1 !important;
+    overflow: hidden !important;
+    background: var(--deep) !important;
   }
   .photo-zone img {
     height: 100% !important;
     width: 100% !important;
     object-fit: cover !important;
-    object-position: center 10% !important;
-    opacity: 0.8 !important; /* Brighter visibility for the partner portrait */
+    object-position: center 25% !important;
+    opacity: 0.50 !important;
+    filter: grayscale(15%) contrast(1.1) brightness(1.05) !important;
+  }
+  .photo-zone::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 2 !important;
+    background: linear-gradient(
+      180deg,
+      rgba(1, 3, 9, 0.75) 0%,
+      rgba(1, 3, 9, 0.4) 35%,
+      rgba(1, 3, 9, 0.88) 80%,
+      var(--void) 100%
+    ) !important;
   }
   .scan-ring {
-    top: 106px !important;
+    top: 30% !important;
+    left: 50% !important;
     bottom: auto !important;
-    right: 50% !important;
-    transform: translate(50%, 0) !important;
-    width: 140px !important;
-    height: 140px !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    width: 160px !important;
+    height: 160px !important;
+    z-index: 3 !important;
+    opacity: 0.65 !important;
   }
   .scan-label {
     top: -16px !important;
     font-size: 8px !important;
+    letter-spacing: 0.15em !important;
+    background: rgba(1, 3, 9, 0.8) !important;
+    padding: 2px 6px !important;
+    border: 1px solid rgba(0, 255, 200, 0.3) !important;
   }
   .hero-text {
     position: relative !important;
-    padding: 0 20px !important;
-    order: 2 !important;
+    z-index: 5 !important;
+    padding: 0 16px !important;
     max-width: 100% !important;
     gap: 10px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+  }
+  .hero-tag {
+    font-size: 9px !important;
+    letter-spacing: 0.18em !important;
+    margin-bottom: 8px !important;
+    word-break: break-word !important;
   }
   .hero-name {
-    font-size: clamp(34px, 10vw, 52px) !important;
-    margin-bottom: 8px !important;
-    line-height: 0.9 !important;
+    font-size: clamp(30px, 9.5vw, 46px) !important;
+    margin-bottom: 10px !important;
+    line-height: 0.95 !important;
+    letter-spacing: 0.02em !important;
   }
   .hero-sub {
     font-size: 11px !important;
-    line-height: 1.55 !important;
-    margin-bottom: 16px !important;
+    line-height: 1.6 !important;
+    margin-bottom: 18px !important;
   }
   .hero-stats-row {
     margin-bottom: 16px !important;
     gap: 12px !important;
   }
   .hud-data {
-    display: none !important; /* Hide cluttered code numbers overlaying the image */
+    display: none !important;
   }
 
-  /* Capabilities Grid: Stack cards in 1 column instead of squished 2 columns */
+  /* Hero CTA Buttons: Full-width stacked buttons for optimal mobile touch targets */
+  .hero-ctas {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+    margin-bottom: 10px !important;
+  }
+  .btn-a, .btn-b {
+    width: 100% !important;
+    min-width: auto !important;
+    padding: 14px 16px !important;
+    font-size: 11px !important;
+    justify-content: center !important;
+    text-align: center !important;
+    display: flex !important;
+    align-items: center !important;
+    min-height: 44px !important;
+  }
+
+  /* Marquee Ticker Banner */
+  .mq {
+    padding: 10px 0 !important;
+    margin-top: 6px !important;
+  }
+  .mq-inner {
+    gap: 24px !important;
+  }
+  .mq-inner span {
+    font-size: 9px !important;
+    letter-spacing: 0.15em !important;
+  }
+
+  /* Terminal Bot Chat */
+  #terminal {
+    padding: 0 16px 40px !important;
+  }
+  .term-header {
+    padding: 8px 12px !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+  .term-title {
+    font-size: 9px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    max-width: 190px !important;
+  }
+  .term-body {
+    height: clamp(240px, 42vh, 340px) !important;
+    padding: 14px 12px !important;
+  }
+  .term-quick-actions {
+    padding: 8px 10px !important;
+    gap: 6px !important;
+  }
+  .term-action-chip {
+    font-size: 9px !important;
+    padding: 6px 10px !important;
+    min-height: 32px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+  }
+  .term-input-row {
+    padding: 10px 12px !important;
+    gap: 8px !important;
+  }
+  .term-input {
+    font-size: 12px !important;
+  }
+  .term-send {
+    padding: 8px 14px !important;
+    font-size: 10px !important;
+    min-height: 34px !important;
+  }
+
+  /* Section Spacing Base */
+  .section {
+    padding: 48px 16px !important;
+    scroll-margin-top: 44px !important;
+  }
+  .s-head {
+    font-size: clamp(26px, 7.5vw, 42px) !important;
+    margin-bottom: 24px !important;
+  }
+
+  /* Capabilities Grid */
   .cap-grid {
     grid-template-columns: 1fr !important;
     gap: 12px !important;
   }
   .cap-card {
-    padding: 20px 16px !important;
+    padding: 18px 16px !important;
+  }
+  .cap-name {
+    font-size: 12px !important;
+  }
+  .cap-desc {
+    font-size: 10px !important;
   }
 
-  /* Process Section spacing: Spaced vertical timeline list */
+  /* Metrics Grid */
+  .metrics-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+  .met {
+    padding: 16px 10px !important;
+  }
+  .met-num {
+    font-size: clamp(28px, 8vw, 40px) !important;
+  }
+  .met-label {
+    font-size: 8px !important;
+  }
+
+  /* Process Section */
   .process-grid {
     gap: 12px !important;
   }
@@ -1376,20 +1545,99 @@ body::after {
   .step-q {
     font-size: 13px !important;
   }
-  
-  /* Testimonial card sizing */
-  .pf {
-    padding: 16px !important;
+  .process-cta-row a {
+    max-width: 100% !important;
+    width: 100% !important;
   }
-  .pf-q {
+
+  /* Deployed Systems Mission Log */
+  .log {
+    padding: 16px 14px !important;
+  }
+  .log-name {
+    font-size: 15px !important;
+  }
+  .log-description {
+    font-size: 11px !important;
+  }
+
+  /* Testimonials / Proof */
+  .pf {
+    padding: 18px 14px !important;
+  }
+  .pf-text {
     font-size: 11px !important;
     line-height: 1.6 !important;
   }
 
-  /* Lead qualification Bot description and CTA styling */
-  .ct-bot-desc {
-    font-size: 11px !important;
-    padding: 0 10px !important;
+  /* GitHub Intelligence Panel */
+  .github-container {
+    gap: 12px !important;
   }
+  .gh-stats-card {
+    padding: 20px 14px !important;
+  }
+  .gh-avatar-clip {
+    width: 80px !important;
+    height: 80px !important;
+  }
+  .gh-avatar-hud {
+    display: none !important;
+  }
+  .gh-name {
+    font-size: 15px !important;
+  }
+  .gh-metrics {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 6px !important;
+  }
+  .gh-met-item {
+    padding: 10px 4px !important;
+  }
+  .gh-met-val {
+    font-size: 16px !important;
+  }
+  .gh-met-lab {
+    font-size: 7px !important;
+    letter-spacing: 0.1em !important;
+  }
+  .gh-bio-text {
+    font-size: 10px !important;
+  }
+  .gh-graph-wrap {
+    padding: 16px 8px !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .gh-graph-wrap img {
+    min-width: 550px !important;
+    height: auto !important;
+  }
+
+  /* Contact Section */
+  #contact {
+    padding: 48px 16px !important;
+  }
+  .ct-head {
+    font-size: clamp(30px, 9vw, 50px) !important;
+  }
+  .ct-sub {
+    font-size: 11px !important;
+  }
+  .ct-bot-desc {
+    font-size: 10px !important;
+    padding: 0 8px !important;
+  }
+  .channels {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+  .ch {
+    padding: 12px 8px !important;
+  }
+  .ch-icon { font-size: 18px !important; }
+  .ch-label { font-size: 9px !important; }
+  .ch-desc { font-size: 8px !important; }
 }
 

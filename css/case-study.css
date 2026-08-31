@@ -267,6 +267,14 @@ section { position: relative; z-index: 10; padding: 60px 20px; }
   font-style: italic;
 }
 
+@media (max-width: 767px) {
+  .hero-case { padding: 80px 16px 40px; }
+  .portfolio-md-content { padding: 20px 16px; }
+  .portfolio-md-content table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .proj-nav { flex-direction: column; align-items: stretch; }
+  .nav-proj { max-width: 100%; text-align: center; }
+}
+
 @media (min-width: 768px) {
   .hero-case { padding: 120px 60px 80px; }
   .ps-grid { grid-template-columns: 1fr 1fr; }

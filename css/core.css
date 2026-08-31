@@ -183,6 +183,23 @@ body::after {
   .sb-mid {
     display: none;
   }
+  .hud-corner, .hc {
+    width: 28px !important;
+    height: 28px !important;
+  }
+  .hc-tl { top: 8px !important; left: 8px !important; }
+  .hc-tr { top: 8px !important; right: 8px !important; }
+  .hc-bl { bottom: 8px !important; left: 8px !important; }
+  .hc-br { bottom: 8px !important; right: 8px !important; }
+  .hud-corner::before, .hc::before { width: 10px !important; }
+  .hud-corner::after, .hc::after { height: 10px !important; }
+
+  #statusbar { padding: 0 14px; height: 44px; }
+  .sb-logo { font-size: 11px; }
+  .sb-status { display: none !important; }
+  .sb-hire { font-size: 9px; padding: 6px 12px; height: 32px; display: inline-flex; align-items: center; }
+  .sb-right { gap: 8px; }
+  .section { padding: 48px 16px; scroll-margin-top: 44px; }
 }
 
 @media (min-width: 768px) {
