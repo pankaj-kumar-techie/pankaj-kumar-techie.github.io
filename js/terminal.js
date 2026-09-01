@@ -2,7 +2,7 @@
 
 const WORKER_URL = 'https://pankaj-portfolio-worker.pankajkumar-techie.workers.dev';
 const BOT_NAME = 'Pankaj AI Assistant';
-const BOT_AVATAR = '🤖';
+const BOT_AVATAR = 'AI';
 
 // ================= STATE =================
 let intakeActive = false;
@@ -25,7 +25,7 @@ function addMsg(role, text, isHtml = false) {
 
   const icon = document.createElement('div');
   icon.className = role === 'bot' ? 'msg-bot-icon' : (role === 'sys' ? 'msg-bot-icon sys' : 'msg-user-icon');
-  icon.textContent = role === 'bot' ? BOT_AVATAR : (role === 'sys' ? '⚠️' : '👤');
+  icon.textContent = role === 'bot' ? BOT_AVATAR : (role === 'sys' ? '!' : 'U');
 
   const content = document.createElement('div');
   content.className = 'msg-text';
@@ -119,12 +119,12 @@ async function handleIntake(userInput) {
     addMsg('bot', INTAKE_STEPS[2]);
   } else if (currentStep === 2) {
     leadData.problem = userInput;
-    addMsg('bot', "✨ Analyzing your requirements...");
+    addMsg('bot', "Analyzing your requirements...");
     showTyping();
     try {
       await sendLeadToWorker(leadData);
       hideTyping();
-      addMsg('bot', `✅ **Lead captured successfully!** Pankaj will personally review your request and reply to **${leadData.email}** within 4 hours. Thank you!`, true);
+      addMsg('bot', `**Lead captured successfully.** Pankaj will personally review your request and reply to **${leadData.email}** within 4 hours. Thank you!`, true);
       // Dispatch analytics event
       window.dispatchEvent(new CustomEvent('lead_submitted', { detail: { source: 'Terminal Intake', name: leadData.name, email: leadData.email } }));
       intakeActive = false;
@@ -132,7 +132,7 @@ async function handleIntake(userInput) {
       leadData = { name: '', email: '', problem: '' };
     } catch (err) {
       hideTyping();
-      addMsg('sys', '⚠️ Submission error. Please email pankajkumar.techie@gmail.com directly.', true);
+      addMsg('sys', '[ERROR] Submission failed. Please email pankajkumar.techie@gmail.com directly.', true);
       intakeActive = false;
     }
   }
@@ -166,9 +166,9 @@ async function sendMessage() {
     currentStep = 0;
     let intro = INTAKE_STEPS[0];
     if (lowerMsg === 'build') {
-      intro = "🛠️ Let's scope your SaaS/MVP build. To start, what is your full name?";
+      intro = "Let's scope your SaaS/MVP build. To start, what is your full name?";
     } else if (lowerMsg === 'automate') {
-      intro = "🤖 Let's automate your workflows. To start, what is your full name?";
+      intro = "Let's automate your workflows. To start, what is your full name?";
     }
     addMsg('bot', intro);
     return;
@@ -197,7 +197,7 @@ async function sendMessage() {
     window.dispatchEvent(new CustomEvent('terminal_command', { detail: { command: rawMessage } }));
   } catch (err) {
     hideTyping();
-    addMsg('sys', '⚠️ Service Interrupted. Please <a href="mailto:pankajkumar.techie@gmail.com" style="color:#00ff00;">Email Pankaj Directly</a>.', true);
+    addMsg('sys', '[ERROR] Service interrupted. Please <a href="mailto:pankajkumar.techie@gmail.com" style="color:#00ff00;">email Pankaj directly</a>.', true);
   } finally {
     isProcessing = false;
     termInput.placeholder = "Ask about AI automation...";
@@ -210,10 +210,10 @@ async function boot(immediate = false) {
   hasBooted = true;
 
   const bootLines = [
-    { t: `🔄 Initializing ${BOT_NAME}...`, d: 300 },
-    { t: `👤 Visitor ID: ${visitorId}`, d: 200 },
-    { t: `✅ System online. I am Pankaj's AI Systems Architect.`, d: 500 },
-    { t: `💡 Click one of the quick pathway chips below (or type it) to begin scoping:`, d: 600 },
+    { t: `Initializing ${BOT_NAME}...`, d: 300 },
+    { t: `Visitor ID: ${visitorId}`, d: 200 },
+    { t: `System online. I am Pankaj's AI Systems Architect.`, d: 500 },
+    { t: `Click one of the quick pathway chips below (or type it) to begin scoping:`, d: 600 },
     { t: "Select BUILD MVP or AUTOMATE WORKFLOW.", d: 400 }
   ];
 
@@ -275,7 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const submitBtn = contactForm.querySelector('.ch-submit-btn');
       const originalText = submitBtn.innerHTML;
       submitBtn.disabled = true;
-      submitBtn.innerHTML = '🤖 TRANSMITTING SIGNAL...';
+      submitBtn.innerHTML = 'TRANSMITTING SIGNAL...';
       
       if (contactStatus) {
         contactStatus.textContent = '';
@@ -298,7 +298,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!response.ok) throw new Error();
         
         if (contactStatus) {
-          contactStatus.textContent = '✅ SIGNAL RECEIVED! Pankaj will contact you within 4 hours.';
+          contactStatus.textContent = 'SIGNAL RECEIVED. Pankaj will contact you within 4 hours.';
           contactStatus.classList.add('success');
         }
         
@@ -308,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.reset();
       } catch (err) {
         if (contactStatus) {
-          contactStatus.textContent = '⚠️ TRANSMISSION ERROR. Please email directly or hire via Upwork.';
+          contactStatus.textContent = 'TRANSMISSION ERROR. Please email directly or hire via Upwork.';
           contactStatus.classList.add('error');
         }
       } finally {

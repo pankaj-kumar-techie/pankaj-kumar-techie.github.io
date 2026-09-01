@@ -46,8 +46,8 @@ async function fetchGitHubData() {
     
     // Enhanced Bio with Metadata
     if (bioEl) {
-      const location = userData.location ? `📍 ${userData.location}` : '🌐 CYBERSPACE';
-      const company = userData.company ? ` | 🏢 ${userData.company}` : '';
+      const location = userData.location ? userData.location : 'CYBERSPACE';
+      const company = userData.company ? ` | ${userData.company}` : '';
       bioEl.innerHTML = `
         <div class="gh-bio-text">${userData.bio || 'AI Agent Architect'}</div>
         <div class="gh-meta-grid">
@@ -90,23 +90,23 @@ function renderFeed(events, container) {
 
     switch (ev.type) {
       case 'PushEvent':
-        icon = '⚡';
+        icon = '▲';
         action = `Pushed ${ev.payload.commits ? ev.payload.commits.length : 1} commit(s)`;
         break;
       case 'CreateEvent':
-        icon = '✨';
+        icon = '+';
         action = `Created ${ev.payload.ref_type}`;
         break;
       case 'WatchEvent':
-        icon = '⭐';
+        icon = '★';
         action = 'Starred repository';
         break;
       case 'IssuesEvent':
-        icon = '🔧';
+        icon = '●';
         action = `${ev.payload.action} issue`;
         break;
       case 'PullRequestEvent':
-        icon = '🔀';
+        icon = '⇄';
         action = `${ev.payload.action} pull request`;
         break;
     }

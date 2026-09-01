@@ -137,6 +137,7 @@ function renderPortfolioPage(meta, htmlContent, slug) {
   setMeta('meta-og-url', 'content', pageUrl);
   setMeta('meta-og-title', 'content', pageTitle);
   setMeta('meta-og-description', 'content', meta.tagline);
+  setMeta('meta-twitter-url', 'content', pageUrl);
   setMeta('meta-twitter-title', 'content', pageTitle);
   setMeta('meta-twitter-description', 'content', meta.tagline);
 }
